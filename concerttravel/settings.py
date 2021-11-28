@@ -38,6 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # The following apps are required from AllAuth Docs:
+    # allows social media callbacks for auth (together with site_id below)
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',  # allows new user,password/password reset
+    'allauth.socialaccount',
     'home',
 ]
 
@@ -70,6 +76,28 @@ TEMPLATES = [
         },
     },
 ]
+
+
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+SITE_ID = 1
+
+# this will output to console confirmation email sent by allauth. 
+# Disalbe on heroku
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  
+ACCOUNT_AUTHTENTICATION_METHOD = 'username_email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
+ACCOUNT_USERNAME_MIN_LENGTH = 4
+LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = '/'
 
 WSGI_APPLICATION = 'concerttravel.wsgi.application'
 
