@@ -9,7 +9,10 @@ body {
     height: calc(100vh - 164px);
     color: #555;
     font-family: 'Lato';
+    ;
 }
+
+
 
 /* from Bulma */
 .icon {
@@ -166,6 +169,25 @@ a.category-badge > span.badge:hover {
     overflow-y: auto;
 }
 
+
+
+/*---------------carousel caption --- */
+
+.carousel-inner{
+    
+}
+
+
+.carousel-caption {
+    top: 0;
+    bottom: auto;
+}
+
+.carousel-caption{
+    font-family: 'Sora', sans-serif;
+    font-size: 30px;
+    letter-spacing: .2rem;
+}
 
 /* -------------------------------- Media Queries */
 
