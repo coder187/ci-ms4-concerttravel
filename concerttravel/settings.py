@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'allauth.account',  # allows new user,password/password reset
     'allauth.socialaccount',
     'home',
+    'events',
 ]
 
 MIDDLEWARE = [
