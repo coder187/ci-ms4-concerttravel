@@ -8,13 +8,7 @@ class PickLoc(models.Model):
     fare = models.DecimalField(max_digits=6, decimal_places=2, default=0)
 
     def __str__(self):
-        return self.name
-
-    def get_friendly_name(self):
-        return self.friendly_name
-
-    def get_upper_name(self):
-        return self.friendly_name.upper
+        return self.location
 
 class EventType(models.Model):
     ''' concert/festival/sporting etc.. '''
@@ -22,14 +16,10 @@ class EventType(models.Model):
     friendly_name = models.CharField(max_length=254, null=True, blank=True)
 
     def __str__(self):
-        return self.name
+        return self.event_type
 
     def get_friendly_name(self):
         return self.friendly_name
-
-    def get_upper_name(self):
-        return self.friendly_name.upper
-
 
 class Destination(models.Model):
     ''' list of venues '''
@@ -37,13 +27,10 @@ class Destination(models.Model):
     friendly_name = models.CharField(max_length=254, null=True, blank=True)
 
     def __str__(self):
-        return self.name
+        return self.destination
 
     def get_friendly_name(self):
         return self.friendly_name
-
-    def get_upper_name(self):
-        return self.friendly_name.upper
 
 class EventList(models.Model):
     event_type = models.ForeignKey('EventType', on_delete=models.PROTECT)
