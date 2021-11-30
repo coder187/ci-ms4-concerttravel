@@ -13,7 +13,7 @@ class EventListAdmin(admin.ModelAdmin):
         'event_dest',
     )
 
-    ordering = ('event_date','name')
+    ordering = ('event_date', 'name')
 
 # Register your models here.
 admin.site.register(EventList, EventListAdmin)
