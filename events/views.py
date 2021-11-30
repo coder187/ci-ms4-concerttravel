@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import EventList
+from .models import EventList, PickLoc
 # Create your views here.
 
 # Create your views here.
@@ -20,8 +20,10 @@ def event_detail(request, event_id):
     ''' a view to show individual event'''
 
     event = get_object_or_404(EventList, pk=event_id)
+    picklocs = PickLoc.objects.all()
     context = {
             'event': event,
+            'picklocs':picklocs
         }
 
     return render(request, 'events/event_detail.html', context)
