@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, HttpResponse
 
 # Create your views here.
 def view_bag(request):
@@ -31,7 +31,6 @@ def adjust_bag(request, combination_key):
 
     qty = int(request.POST.get('quantity'))
     bag = request.session.get('bag', {})
-    print (bag)
 
     if qty > 0:
         bag[combination_key] = qty
@@ -45,10 +44,14 @@ def adjust_bag(request, combination_key):
 def remove_from_bag(request, combination_key):
     '''Remove the ticket from the shopping bag '''
 
-    bag = request.session.get('bag', {})
+    try:
 
-    bag.pop(combination_key)
+        bag = request.session.get('bag', {})
 
-    request.session['bag'] = bag
-    return redirect(reverse('view_bag'))
-    
+        bag.pop(combination_key)
+
+        request.session['bag'] = bag
+
+        return HttpResponse(status=200)
+    except Exception as e:
+        return HttpResponse(status=500)
