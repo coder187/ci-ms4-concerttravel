@@ -39,10 +39,10 @@
                             
                                 <div class="col-12">
                                     <p><strong>Pick Up Location:</strong></p>
-                                    <select class="form-control rounded-0 w-50" name="pick-loc" id='id_pick-loc'>
+                                    <select class="form-control rounded-0 w-50" name="pick-loc" id="id_pick-loc">
                                         {% for p in picklocs %}
-                                            <option value="p.id">{{ p.location }} &nbsp; @ &nbsp; {{p.pick_time }} &nbsp;[€{{p.fare }}]</option>
-                                        {%endfor %}
+                                            <option value="{{ p.id }}">{{ p.location }} &nbsp; @ &nbsp; {{p.pick_time }} &nbsp;[€{{p.fare }}]</option>
+                                        {% endfor %}
                                     </select>
                                 </div>
         
