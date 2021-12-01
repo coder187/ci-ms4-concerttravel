@@ -15,14 +15,18 @@ def bag_contents(request):
         eventid = event_id.split(':')[0]
         picklocid = event_id.split(':')[1]
         pickloc_model = get_object_or_404(PickLoc, pk=picklocid)
+        eventlist_model = get_object_or_404(EventList, pk=eventid)
         ticket_price = pickloc_model.fare
         total = total + ticket_price * quantity
         product_count += quantity
         bag_items.append({
                 'event_id': eventid,
                 'pickloc_id': pickloc_model.id,
+                'pickloc_name': pickloc_model.location,
                 'ticket_quantity': quantity,
-                'price_per_ticket': pickloc_model.fare
+                'price_per_ticket': pickloc_model.fare,#
+                'price_line': pickloc_model.fare * quantity,
+                'eventlist': eventlist_model
             })
 
     
