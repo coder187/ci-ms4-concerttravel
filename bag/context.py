@@ -25,12 +25,16 @@ def bag_contents(request):
                 'price_per_ticket': pickloc_model.fare
             })
 
-    print(total)
-    print(product_count)
+    
+    grand_total = total # for header total
+    # print(total)
+    # print(product_count)
+
     context = {
         'bag_items': bag_items,
         'total': total,
-        'product_count': product_count
+        'product_count': product_count,
+        'grand_total': grand_total
     }
 
     return context
