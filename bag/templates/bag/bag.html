@@ -53,7 +53,7 @@
                                 <p class="my-0">€{{ item.price_per_ticket }}</p>
                             </td>
                             <td class="py-3"> <!-- QTY -->
-                                <form class="form update-form" method="POST" action=""> 
+                                <form class="form update-form" method="POST" action="{% url 'adjust_bag' item.combi_key %}"> 
                                     {% csrf_token %}
                                     <div class="form-group">
                                         <div class="input-group">
@@ -83,7 +83,7 @@
                                     
                                 </form>
                                 <a class="update-link text-info"><small>Update</small></a>
-                                <a class="remove-item text-danger float-right" id="remove_{{ item.event_id}}" data-pickloc="{{ item.pickloc_id }}"><small>Remove</small></a>
+                                <a class="remove-item text-danger float-right" id="remove_{{ item.combi_key }}"><small>Remove</small></a>
                                 
                                 
 
@@ -159,11 +159,9 @@
         var itemId = $(this).attr('id').split('remove_')[1]; //split the update link
         console.log(itemId);
 
-        var pickloc = $(this).data('pickloc'); //data methog to get date-size attrib
-        console.log(pickloc);
 
         var url = `/bag/remove/${itemId}/`; 
-        var data = {'csrfmiddlewaretoken': csrfToken, 'pickloc': pickloc}; //csrfToken special key.
+        var data = {'csrfmiddlewaretoken': csrfToken}; //csrfToken special key.
 
         $.post(url, data)
          .done(function() { //when done reload the page

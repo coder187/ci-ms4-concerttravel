@@ -26,7 +26,8 @@ def bag_contents(request):
                 'ticket_quantity': quantity,
                 'price_per_ticket': pickloc_model.fare,#
                 'price_line': pickloc_model.fare * quantity,
-                'eventlist': eventlist_model
+                'eventlist': eventlist_model,
+                'combi_key': str(eventid) + ':' + str(pickloc_model.id)
             })
 
     
