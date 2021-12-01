@@ -78,7 +78,7 @@
                                 </div>
                             </div>
                             
-                            
+                            <div class="col{% if s %}-12 mt-2{% endif %}"></div>
                             <div class="col">
                                 <a href="{% url 'events' %}" class="btn btn-outline-black rounded-0 mt-5">
                                     <span class="icon">
@@ -99,3 +99,7 @@
     
 {% endblock %}
 
+{% block post_loadjs %}
+{{ block.super }}
+{% include 'events/includes/quantity_input_script.html' %}
+{% endblock %}
