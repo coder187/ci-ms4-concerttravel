@@ -53,6 +53,41 @@
                                 <p class="my-0">€{{ item.price_per_ticket }}</p>
                             </td>
                             <td class="py-3"> <!-- QTY -->
+                                <form class="form update-form" method="POST" action=""> 
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <button class="decrement-qty btn btn-sm btn-black rounded-0" 
+                                                    data-item_id="{{ item.event_id }}" id="decrement-qty_{{ item.event_id }}">
+                                                    <span>
+                                                        <i class="fas fa-minus fa-sm"></i>
+                                                    </span>
+                                                </button>
+                                            </div>
+                                            <input class="form-control form-control-sm qty_input" type="number"
+                                                name="quantity" value="{{ item.ticket_quantity }}" min="1" max="49"
+                                                data-item_id="{{ item.event_id }}"
+                                                id="id_qty_{{ item.event_id }}">
+                                                
+                                            <div class="input-group-append">
+                                                <button class="increment-qty btn btn-sm btn-black rounded-0"
+                                                    data-item_id="{{ item.event_id }}" id="increment-qty_{{ item.event_id }}">
+                                                    <span>
+                                                        <i class="fas fa-plus fa-sm"></i>
+                                                    </span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </form>
+                                <a class="update-link text-info"><small>Update</small></a>
+                                <a class="remove-item text-danger float-right" id="remove_{{ item.event_id}}" data-pickloc="{{ item.pickloc_id }}"><small>Remove</small></a>
+                                
+                                
+
+                                
                                 <p class="my-0">{{ item.ticket_quantity }}</p>
                             </td>
                             <td class="py-3">
@@ -104,4 +139,36 @@
 
 {% endblock %}
 
+{% block post_loadjs %}
+{{ block.super }}
+{% include 'events/includes/quantity_input_script.html' %}
 
+
+<script type="text/javascript">
+    // Update quantity
+    $('.update-link').click(function(e) {
+        console.log("update called");
+        var form = $(this).prev('.update-form'); // use previuls to find update form and call its submit method
+        form.submit();
+    })
+
+    // Remove item and reload on click
+    $('.remove-item').click(function(e) {
+        console.log("remove called");
+        var csrfToken = "{{ csrf_token }}"; // store csrfToken as string
+        var itemId = $(this).attr('id').split('remove_')[1]; //split the update link
+        console.log(itemId);
+
+        var pickloc = $(this).data('pickloc'); //data methog to get date-size attrib
+        console.log(pickloc);
+
+        var url = `/bag/remove/${itemId}/`; 
+        var data = {'csrfmiddlewaretoken': csrfToken, 'pickloc': pickloc}; //csrfToken special key.
+
+        $.post(url, data)
+         .done(function() { //when done reload the page
+             location.reload();
+         });
+    })
+</script>
+{% endblock %}
