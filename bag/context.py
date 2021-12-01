@@ -2,6 +2,11 @@
 
 def bag_contents(request):
     
-    context = {}
+    bag_items =  [] # empty list
+
+    context = {
+        'bag_items':bag_items
+    }
 
     return context
+    
