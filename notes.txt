@@ -1,0 +1,6 @@
+todo:
+fix noimage
+add br to index
+add ticket discount
+toasts
+size images
