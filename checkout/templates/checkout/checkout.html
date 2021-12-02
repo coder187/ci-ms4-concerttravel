@@ -50,34 +50,28 @@
                             </a>
                         </div>
                         <div class="col-7">
-                            <p class="my-0"><strong>{{ item.event.name }}</strong></p>
-                            <p class="my-0 small">{{ item.event.event_date }}</p>
-                            <p class="my-0 small text-muted">Qty:</p>
+                            <p class="my-0"><strong>{{ item.eventlist.name }}</strong></p>
+                            <p class="my-0 small">{{ item.eventlist.event_date }} @ {{ item.eventlist.event_dest }}</p>
+                            <p class="my-0 small text-muted">Qty: {{item.ticket_quantity}} @ €{{item.price_per_ticket}}</p>
                         </div>
                         <div class="col-3 text-right">
-                            <p class="my-0 small text-muted">Line Total</p>
+                            <p class="my-0 small text-muted">€{{item.price_line}}</p>
                         </div>
                     </div>
                 {% endfor %}
                 <hr class="my-0">
                 <div class="row text-black text-right">
                     <div class="col-7 offset-2">
-                        <p class="my-0">Order Total:</p>
-                        <p class="my-0">Delivery:</p>
                         <p class="my-0">Grand Total:</p>
                     </div>
                     <div class="col-3">
-                        <p class="my-0">${{ total | floatformat:2 }}</p>
-                        <p class="my-0">Delivery</p>
-                        <p class="my-0"><strong>Grand Total</strong></p>
+                        <p class="my-0">€{{ total | floatformat:2 }}</p>
                     </div>
                 </div>
             </div>
             <div class="col-12 col-lg-6">
                 <p class="text-muted">Please fill out the form below to complete your order</p>
             
-                {{bag_items }}
-
                 <form action="{% url 'checkout' %}" method="POST" id="payment-form">
                     {% csrf_token %}
                     <fieldset class="rounded px-3 mb-5">
@@ -135,7 +129,7 @@
 							<span class="icon">
 								<i class="fas fa-exclamation-circle"></i>
 							</span>
-							<span>Your card will be charged <strong>TOTAL CHSRGE</strong></span>
+							<span>Your card will be charged <strong>TOTAL CHARGE</strong></span>
 						</p>
 					</div>
                 </form>
