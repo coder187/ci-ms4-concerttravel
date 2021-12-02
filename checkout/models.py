@@ -53,7 +53,6 @@ class OrderLineItem(models.Model):
     pickloc = models.ForeignKey(PickLoc, null=False, blank=False, on_delete=models.PROTECT)
     price = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False, default=0)
     quantity = models.IntegerField(null=False, blank=False, default=0)   
-    ticket_no = models.IntegerField(null=False, blank=False, default=0)
     lineitem_total = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False, editable=False)
 
     def save(self, *args, **kwargs):
