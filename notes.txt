@@ -9,3 +9,4 @@ checkout.models.Order.update_total
 
 qjuestuin:
 siganl to update lineitem total on order header. Why not recalc as needed?
+why requirements file so large?
