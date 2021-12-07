@@ -24,7 +24,7 @@ class StripeWH_Handler:
         """
         Handle the payment_intent.succeeded webhook from Stripe
         """
-        print(event.data.object)
+        #print(event.data.object)
         """
         Handle the payment_intent.succeeded webhook from Stripe
         """
@@ -88,16 +88,19 @@ class StripeWH_Handler:
                 for item_id, item_data in json.loads(bag).items():
                     print(item_id)
                     print(item_data)
-                    #event_id = item_id.split(':')[0]
-                    #pickloc_id = item_id.split(':')[1]
-                    #pickloc_model = PickLoc.objects.get(id=pickloc_id) 
-                    #fare = pickloc_model.fare
-                    #eventlist_model = EventList.objects.get(id=event_id)
-                    #qty = int(item_data)
+                    event_id = item_id.split(':')[0]
+                    pickloc_id = item_id.split(':')[1]
+                    print(event_id)
+                    print (pickloc_id)
+                    pickloc_model = PickLoc.objects.get(id=pickloc_id) 
+                    fare = pickloc_model.fare
+                    eventlist_model = EventList.objects.get(id=event_id)
+                    qty = int(item_data)
                     #print (event_id)
                     #print (pickloc_id)
-                    #i=0
-                    #for i in range(qty):
+                    i=0
+                    for i in range(qty):
+                        print(fare)
                     #    order_line_item = OrderLineItem(
                     #    order=order,
                     #    event=eventlist_model,
@@ -105,7 +108,7 @@ class StripeWH_Handler:
                     #    price=fare
                     #    )
                     #order_line_item.save()
-                    #i +=1
+                    i +=1
             except Exception as e:
                 if order:
                     order.delete()
