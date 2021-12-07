@@ -86,12 +86,8 @@ class StripeWH_Handler:
                     stripe_pid=pid,
                 )
                 for item_id, item_data in json.loads(bag).items():
-                    print(item_id)
-                    print(item_data)
                     event_id = item_id.split(':')[0]
                     pickloc_id = item_id.split(':')[1]
-                    print(event_id)
-                    print (pickloc_id)
                     pickloc_model = PickLoc.objects.get(id=pickloc_id) 
                     fare = pickloc_model.fare
                     eventlist_model = EventList.objects.get(id=event_id)
@@ -100,14 +96,13 @@ class StripeWH_Handler:
                     #print (pickloc_id)
                     i=0
                     for i in range(qty):
-                        print(fare)
-                    #    order_line_item = OrderLineItem(
-                    #    order=order,
-                    #    event=eventlist_model,
-                    #    pickloc=pickloc_model,
-                    #    price=fare
-                    #    )
-                    #order_line_item.save()
+                        order_line_item = OrderLineItem(
+                        order=order,
+                        event=eventlist_model,
+                        pickloc=pickloc_model,
+                        price=fare
+                        )
+                    order_line_item.save()
                     i +=1
             except Exception as e:
                 if order:
