@@ -37,8 +37,8 @@
                         </tr>
                     </thead>
                     {% for item in bag_items %}
-                        {{ item.eventlist.image.url }}
                         
+                        {{ item.eventlist.image.url }}
                         <tr>
                             <td class="p-3 w-25"> <!-- IMAGE -->
                                 <img class="img-fluid rounded" src="{{ item.eventlist.image.url }}">
