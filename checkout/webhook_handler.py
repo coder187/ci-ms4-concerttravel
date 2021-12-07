@@ -24,10 +24,6 @@ class StripeWH_Handler:
         """
         Handle the payment_intent.succeeded webhook from Stripe
         """
-        #print(event.data.object)
-        """
-        Handle the payment_intent.succeeded webhook from Stripe
-        """
         intent = event.data.object
         pid = intent.id
         bag = intent.metadata.bag
@@ -58,7 +54,7 @@ class StripeWH_Handler:
                     street_address2__iexact=shipping_details.address.line2,
                     county__iexact=shipping_details.address.state,
                     original_bag=bag,
-                    stripe_pid=pid,
+                    stripe_pid=pid, # why match on other fiekds when pid is unique?
                 )
                 order_exists = True
                 break
