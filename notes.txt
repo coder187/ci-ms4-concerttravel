@@ -23,6 +23,10 @@ why requirements file so large?
 pip3 freeze > unins.txt && pip3 uninstall -y -r unins.txt && rm unins.txt
 pip3 install -r requirements.txt
 
+python3 manage.py makemikgrations --dry-run 
+python3 manage.py migrate --plan 
+
+
 
 user accs
 testcheckout@gmail.com
