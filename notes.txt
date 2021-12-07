@@ -8,8 +8,12 @@ checkout.models.Order.update_total [done]
 fix css on checkout css
 fix country code on payment form
 fix delivert details
+remove print and console debug lines.
+ensure all images are workung as expected
+general css and site tidu yp
+automaated testing.
 
-
+aaa
 qjuestuin:
 siganl to update lineitem total on order header. Why not recalc as needed?
 why requirements file so large?
