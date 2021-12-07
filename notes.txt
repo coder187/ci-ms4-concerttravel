@@ -1,10 +1,13 @@
 todo:
-fix noimage AND IMAGE SETTINGS
-add br to index
+fix noimage AND IMAGE SETTINGS [done]
+add br to index 
 add ticket discount
 toasts
 size images
-checkout.models.Order.update_total
+checkout.models.Order.update_total [done]
+fix css on checkout css
+fix country code on payment form
+fix delivert details
 
 
 qjuestuin:
