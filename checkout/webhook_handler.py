@@ -94,7 +94,8 @@ class StripeWH_Handler:
                     fare = pickloc_model.fare
                     eventlist_model = EventList.objects.get(id=event_id)
                     qty = int(item_data)
-                
+                    print (event_id)
+                    print (pickloc_id)
                     i=0
                     #for i in range(qty):
                     #    order_line_item = OrderLineItem(
