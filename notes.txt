@@ -24,6 +24,12 @@ pip3 freeze > unins.txt && pip3 uninstall -y -r unins.txt && rm unins.txt
 pip3 install -r requirements.txt
 
 
+user accs
+testcheckout@gmail.com
+testuser
+$Qwerty1234
+
+
 
 @register.filter(name='pad_ticket_number')
 def pad_ticket_number(ticketNo, pad):
