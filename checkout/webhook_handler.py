@@ -57,7 +57,7 @@ class StripeWH_Handler:
                     street_address1__iexact=shipping_details.address.line1,
                     street_address2__iexact=shipping_details.address.line2,
                     county__iexact=shipping_details.address.state,
-                    grand_total=grand_total,
+                    order_total=order_total,
                     original_bag=bag,
                     stripe_pid=pid,
                 )
@@ -87,16 +87,17 @@ class StripeWH_Handler:
                     stripe_pid=pid,
                 )
                 for item_id, item_data in json.loads(bag).items():
-                    
-                    event_id = item_id.split(':')[0]
-                    pickloc_id = item_id.split(':')[1]
-                    pickloc_model = PickLoc.objects.get(id=pickloc_id) 
-                    fare = pickloc_model.fare
-                    eventlist_model = EventList.objects.get(id=event_id)
-                    qty = int(item_data)
-                    print (event_id)
-                    print (pickloc_id)
-                    i=0
+                    print(item_id)
+                    print(item_data)
+                    #event_id = item_id.split(':')[0]
+                    #pickloc_id = item_id.split(':')[1]
+                    #pickloc_model = PickLoc.objects.get(id=pickloc_id) 
+                    #fare = pickloc_model.fare
+                    #eventlist_model = EventList.objects.get(id=event_id)
+                    #qty = int(item_data)
+                    #print (event_id)
+                    #print (pickloc_id)
+                    #i=0
                     #for i in range(qty):
                     #    order_line_item = OrderLineItem(
                     #    order=order,
