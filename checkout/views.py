@@ -8,7 +8,7 @@ from django.conf import settings
 from .forms import OrderForm
 from .models import Order, OrderLineItem
 
-from events.models import EventList
+from events.models import EventList, PickLoc
 # from profiles.models import UserProfile
 # from profiles.forms import UserProfileForm
 from bag.context import bag_contents
