@@ -38,3 +38,4 @@ def get_ticket_qty(order_number,event,pickloc):
     ticket_count= order.lineitems.filter(event=event,pickloc=pickloc).count()
     # {% get_ticket_qty order.order_number item.event.id item.pickloc.id  %}
     return ticket_count
+
