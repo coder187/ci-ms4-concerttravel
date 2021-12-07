@@ -7,7 +7,8 @@ from .forms import OrderForm
 
 from bag.context import bag_contents
 
-from events.models import PickLoc
+from events.models import PickLoc, EventList
+from .models import Order, OrderLineItem
 
 import datetime
 
@@ -41,23 +42,32 @@ def checkout(request):
 
         order_form = OrderForm(form_data)
         if order_form.is_valid():
-            order = order_form.save(commit=False)
+            order = order_form.save()
 
             # iterate over the bag items and add to db
             # item_id = event_id:pickloc_id, item_data = qty
             for item_id, item_data in bag.items():
                 event_id = item_id.split(':')[0]
                 pickloc_id = item_id.split(':')[1]
-                picklocs =PickLoc.objects.get(id=pickloc_id) 
-                fare = picklocs.fare
+                pickloc_model = PickLoc.objects.get(id=pickloc_id) 
+                fare = pickloc_model.fare
+                eventlist_model = EventList.objects.get(id=event_id)
                 qty = int(item_data)
-    
+                
+                i=0
                 for i in range(qty):
-                    print(f"event id:{event_id} pickloc_id:{pickloc_id}")
-                    print(f"ticket no: {item_data}")
-                    print(f"fare: {fare}")
+                    order_line_item = OrderLineItem(
+                        order=order,
+                        event=eventlist_model,
+                        pickloc=pickloc_model,
+                        price=fare
+                        )
+                    order_line_item.save()
+                    
+                    # print(f"event id:{event_id} pickloc_id:{pickloc_id}")
+                    # print(f"ticket no: {item_data}")
+                    # print(f"fare: {fare}")
 
-                    fare
                     i +=1
 
     if not bag:
