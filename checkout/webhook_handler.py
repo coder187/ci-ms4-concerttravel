@@ -96,15 +96,15 @@ class StripeWH_Handler:
                     qty = int(item_data)
                 
                     i=0
-                    for i in range(qty):
-                        order_line_item = OrderLineItem(
-                        order=order,
-                        event=eventlist_model,
-                        pickloc=pickloc_model,
-                        price=fare
-                        )
-                    order_line_item.save()
-                    i +=1
+                    #for i in range(qty):
+                    #    order_line_item = OrderLineItem(
+                    #    order=order,
+                    #    event=eventlist_model,
+                    #    pickloc=pickloc_model,
+                    #    price=fare
+                    #    )
+                    #order_line_item.save()
+                    #i +=1
             except Exception as e:
                 if order:
                     order.delete()
