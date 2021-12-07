@@ -10,3 +10,18 @@ checkout.models.Order.update_total
 qjuestuin:
 siganl to update lineitem total on order header. Why not recalc as needed?
 why requirements file so large?
+
+
+pip3 freeze > unins.txt && pip3 uninstall -y -r unins.txt && rm unins.txt
+pip3 install -r requirements.txt
+
+
+
+@register.filter(name='pad_ticket_number')
+def pad_ticket_number(ticketNo, pad):
+    """add leading zeros to ticket no"""
+    return str(arg1) + ':' + str(arg2)
+
+
+    4000 0027 6000 3184
+
