@@ -16,7 +16,6 @@ def concat_str(arg1, arg2):
     return str(arg1) + ':' + str(arg2)
 
 
-
 @register.simple_tag(name='multiple_args_tag')
 def multiple_args_tag(a, b, c, d):
    print (a)
