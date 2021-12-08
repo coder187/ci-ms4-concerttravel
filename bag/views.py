@@ -1,4 +1,9 @@
-from django.shortcuts import render, redirect, reverse, HttpResponse
+from django.shortcuts import render, redirect, reverse, HttpResponse,get_object_or_404
+from django.contrib import messages
+from events.models import EventList, PickLoc
+
+from datetime import datetime
+
 
 # Create your views here.
 def view_bag(request):
@@ -8,8 +13,14 @@ def view_bag(request):
 def add_to_bag(request, event_id):
     '''Add a ticket for the given event to the bag '''
 
-    qty = int(request.POST.get('quantity'))
+    event = get_object_or_404(EventList, pk=event_id)
     pickloc = request.POST.get('pick-loc')
+    pick_loc_desc = get_object_or_404(PickLoc, pk=pickloc)
+
+    formatted_eventdate = event.event_date.strftime("%b/%d")
+
+    qty = int(request.POST.get('quantity'))
+    
     event_pickloc = event_id + ':' + pickloc
     redirect_url = request.POST.get('redirect_url')
 
@@ -19,7 +30,9 @@ def add_to_bag(request, event_id):
     
     if event_pickloc in list(bag.keys()):
         bag[event_pickloc] += qty
+        messages.success(request, f'Updated {event.name} {formatted_eventdate} [{pick_loc_desc}]')
     else:
+        messages.success(request, f'Added {event.name} {formatted_eventdate} [{pick_loc_desc}] to your bag')
         bag[event_pickloc] = qty  # 'event_id:pickloc':qty
 
     request.session['bag'] = bag
@@ -39,7 +52,7 @@ def adjust_bag(request, combination_key):
 
     request.session['bag'] = bag
     return redirect(reverse('view_bag'))
-
+            
 
 def remove_from_bag(request, combination_key):
     '''Remove the ticket from the shopping bag '''
