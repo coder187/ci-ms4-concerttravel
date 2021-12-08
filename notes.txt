@@ -14,6 +14,7 @@ general css and site tidu yp
 automaated testing.
 fix images not showing on bag htnml [fixed]
 resize images
+add qty to message toats.
 
 force rebuild 4
 qjuestuin:

@@ -47,8 +47,10 @@ def adjust_bag(request, combination_key):
 
     if qty > 0:
         bag[combination_key] = qty
+        messages.success(request, f'Updated {event.name} {formatted_eventdate} [{pick_loc_desc}]')
     else:
         bag.pop(combination_key)
+        messages.success(request, f'Removed {event.name} {formatted_eventdate} from your bag.')
 
     request.session['bag'] = bag
     return redirect(reverse('view_bag'))
@@ -62,7 +64,8 @@ def remove_from_bag(request, combination_key):
         bag = request.session.get('bag', {})
 
         bag.pop(combination_key)
-
+        messages.success(request, f'Removed {event.name} {formatted_eventdate} from your bag.')
+        
         request.session['bag'] = bag
 
         return HttpResponse(status=200)
