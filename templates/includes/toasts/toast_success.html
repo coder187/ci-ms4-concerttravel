@@ -21,9 +21,13 @@
                     <div class="row">
                         <div class="col-3 my-1">
                             {% if item.eventlist.image %}
-                            <img class="w-100" src="{{ item.eventlist.image.url }}" alt="{{ item.eventlist.name }}">
+                                <img class="w-100" src="{{ item.eventlist.image.url }}" alt="{{ item.eventlist.name }}">
                             {% else %}
-                            <img class="w-100" src="{{ MEDIA_URL }}noimage.png" alt="{{ item.eventlist.name }}">
+                                {% if item.eventlist.image_url %}
+                                    <img class="w-100" src="{{ item.eventlist.image_url }}" alt="{{ item.eventlist.name }}">
+                                {% else %}
+                                    <img class="w-100" src="{{ MEDIA_URL }}noimage.png" alt="{{ item.eventlist.name }}">
+                                {% endif %}
                             {% endif %}
                         </div>
                         <div class="col-9">

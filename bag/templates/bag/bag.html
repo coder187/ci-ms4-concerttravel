@@ -39,15 +39,15 @@
                     {% for item in bag_items %}
                         <tr>
                             <td class="p-3 w-25"> <!-- IMAGE -->
-                                {% if item.eventlist.image.url and item.eventlist.image %}
+                                {% if item.eventlist.image %}
                                     <img class="img-fluid rounded" src="{{ item.eventlist.image.url }}" alt="{{item.eventlist.name}}">
                                 {% else %}
-                                    <img class="img-fluid rounded" src="{{ MEDIA_URL }}noimage.png" alt="{{item.eventlist.name}}">
-   
+                                    {% if item.eventlist.image_url %}
+                                        <img class="img-fluid rounded" src="{{ item.eventlist.image_url }}" alt="{{item.eventlist.name}}">
+                                    {% else %}
+                                        <img class="img-fluid rounded" src="{{ MEDIA_URL }}noimage.png" alt="{{item.eventlist.name}}">
+                                    {% endif %}    
                                 {% endif %}
-                                
-                              
-                              
                             </td> 
                             <td class="py-3"> <!-- DESC -->
                                 <p class="my-0"><strong>{{ item.eventlist.name }}</strong></p>

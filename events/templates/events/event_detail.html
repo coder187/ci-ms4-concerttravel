@@ -19,10 +19,16 @@
                         <a href="{{ event.image.url }}" target="_blank">
                             <img class="card-img-top img-fluid" src="{{ event.image.url }}" alt="{{ event.name }}">
                         </a>
+                    {% else %}
+                        {% if event.image_url %}
+                            <a href="">
+                                <img class="card-img-top img-fluid" src="{{ event.image_url }}" alt="{{ event.name }}">
+                            </a>
                         {% else %}
-                        <a href="">
-                            <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ event.name }}">
-                        </a>
+                            <a href="">
+                                <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ event.name }}">
+                            </a>
+                        {% endif %}
                     {% endif %}
                 </div>
             </div>

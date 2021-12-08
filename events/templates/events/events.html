@@ -27,14 +27,19 @@
                             
                             <!--card header -->
                             {% if event.image %}
-                            <a href="{% url 'event_detail' event.id %}">
-                                <img class="card-img-top img-fluid" src="{{ event.image.url }}" alt="{{ event.name }}">
-                                
-                            </a>
+                                <a href="{% url 'event_detail' event.id %}">
+                                    <img class="card-img-top img-fluid" src="{{ event.image.url }}" alt="{{ event.name }}">
+                                </a>
                             {% else %}
-                            <a href="{% url 'event_detail' event.id %}">
-                                <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ event.name }}">
-                            </a>
+                                {% if event.image_url %}
+                                    <a href="{% url 'event_detail' event.id %}">
+                                        <img class="card-img-top img-fluid" src="{{ event.image_url }}" alt="{{ event.name }}">
+                                    </a>
+                                {% else %}
+                                    <a href="{% url 'event_detail' event.id %}">
+                                        <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ event.name }}">
+                                    </a>
+                                {% endif %}    
                             {% endif %}
 
                             <!--card body -->
