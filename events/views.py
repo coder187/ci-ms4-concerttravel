@@ -9,7 +9,8 @@ def all_events(request):
     ''' a view to show all events, inc sorting and search query'''
 
 
-    # get all events with an event date bewtween todat and today+days_to_show
+    # get all events with an event date bewtween today and today+days_to_show
+    # and where publish = true
     if hasattr(settings, 'DAYS_TO_SHOW'):
         days_to_show = int(settings.DAYS_TO_SHOW)
     else:
@@ -21,7 +22,8 @@ def all_events(request):
     print (to_date)
     
     events = EventList.objects.filter(
-        event_date__range=[from_date, to_date]).order_by(
+        event_date__range=[from_date, to_date],
+            publish=True).order_by(
             'event_date') 
   
     context = {
