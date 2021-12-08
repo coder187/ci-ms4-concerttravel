@@ -97,6 +97,8 @@ class StripeWH_Handler:
                     county=shipping_details.address.state,
                     original_bag=bag,
                     stripe_pid=pid,
+                    user_profile=profile
+
                 )
                 for item_id, item_data in json.loads(bag).items():
                     event_id = item_id.split(':')[0]
