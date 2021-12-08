@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from .models import EventList, PickLoc
 from datetime import datetime, timedelta
 from django.conf import settings
-# Create your views here.
+from .forms import EventListForm
 
 # Create your views here.
 def all_events(request):
@@ -43,3 +43,13 @@ def event_detail(request, event_id):
 
     return render(request, 'events/event_detail.html', context)
     
+
+def add_event(request):
+    """ Add a event to the eventList """
+    form = EventListForm()
+    template = 'events/add_event.html'
+    context = {
+        'form': form,
+    }
+
+    return render(request, template, context)

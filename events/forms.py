@@ -5,14 +5,14 @@ from .models import EventList, PickLoc, EventType, Destination
 class EventListForm(forms.ModelForm):
 
     class Meta:
-        model = EventList()
+        model = EventList
         fields = '__all__'
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        picklocs = PickLoc().objects.all()
-        eventtypes = EventType().objects.all()
-        destinations = Destination()().objects.all()
+        picklocs = PickLoc.objects.all()
+        eventtypes = EventType.objects.all()
+        destinations = Destination.objects.all()
         
         dest_friendly_names = [(d.id, d.get_friendly_name()) for d in destinations]
 
