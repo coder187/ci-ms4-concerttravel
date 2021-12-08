@@ -17,7 +17,7 @@ class OrderAdmin(admin.ModelAdmin):
                 'street_address1','street_address2',
                 'county','order_total',
                 'original_bag','stripe_pid')# To restrict the columns that show up in the order list to only a few key items.
-    list_display = ('order_number', 'date', 'full_name','order_total')
+    list_display = ('id','order_number', 'date', 'full_name','order_total')
 
     ordering = ('-date',)
 

@@ -2,6 +2,8 @@ from django.http import HttpResponse
 
 from .models import Order, OrderLineItem
 from events.models import EventList, PickLoc
+from profiles.models import UserProfile
+
 
 import json
 import time
