@@ -1,4 +1,3 @@
-Hello {{ order.full_name }}!
 
 This is a confirmation of your order at Boutique Ado. Your order information is below:
 
