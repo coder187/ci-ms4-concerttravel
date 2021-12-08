@@ -1,7 +1,10 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.contrib import messages
+from django.conf import settings
+
 from .models import EventList, PickLoc
 from datetime import datetime, timedelta
-from django.conf import settings
+
 from .forms import EventListForm
 
 # Create your views here.
@@ -48,7 +51,17 @@ def event_detail(request, event_id):
 
 def add_event(request):
     """ Add a event to the eventList """
-    form = EventListForm()
+    if request.method == 'POST':
+        form = EventListForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully added event!')
+            return redirect(reverse('add_event'))
+        else:
+            messages.error(request, 'Failed to add event. Please ensure the form is valid.')
+    else:
+        form = EventListForm()
+    
     template = 'events/add_event.html'
     context = {
         'form': form,
