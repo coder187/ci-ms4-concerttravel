@@ -12,6 +12,8 @@ class EventListAdmin(admin.ModelAdmin):
         'event_date',
         'description',
         'event_dest',
+        'image',
+        'image_url'
     )
 
     ordering = ('event_date', 'name')
