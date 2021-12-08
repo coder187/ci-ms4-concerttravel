@@ -7,6 +7,7 @@ from .models import EventList, EventType, PickLoc, Destination
 
 class EventListAdmin(admin.ModelAdmin):
     list_display = (
+        'id',
         'name',
         'event_date',
         'description',
