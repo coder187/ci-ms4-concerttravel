@@ -136,6 +136,7 @@ form.addEventListener('submit', function(ev) {
             } else {
                 if (result.paymentIntent.status === 'succeeded') {
                     //console.log('stripe success')
+                    
                     //form.submit();
                 }
             }
