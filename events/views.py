@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
+from django.db.models import Q
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.db.models import ProtectedError
@@ -27,13 +28,30 @@ def all_events(request):
     print (from_date)
     print (to_date)
     
+    
+
     events = EventList.objects.filter(
         event_date__range=[from_date, to_date],
             publish=True).order_by(
             'event_date') 
+
+    query = None
+
+    if request.GET:
+        if 'q' in request.GET:
+            query = request.GET['q']
+            if not query:
+                messages.error(request, "You didn't enter any search criteria!")
+                return redirect(reverse('events'))
+            
+            queries = Q(name__icontains=query) | Q(description__icontains=query) | Q(event_dest__friendly_name__icontains=query) | Q(event_type__friendly_name__icontains=query)
+            events = EventList.objects.filter(queries)
+    
+    
   
     context = {
         'events':events,
+        'search_term': query
     }
 
     return render(request, 'events/events.html', context)
