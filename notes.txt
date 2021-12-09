@@ -15,6 +15,11 @@ automaated testing.
 fix images not showing on bag htnml [fixed]
 resize images
 add qty to message toats.
+email text and possiblt attach ticket.
+discount when ticket purch >10
+date format on date picker
+add name to profile page.
+
 
 force rebuild 4
 qjuestuin:

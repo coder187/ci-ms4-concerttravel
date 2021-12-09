@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
+from django.db.models import ProtectedError
+
 
 from .models import EventList, PickLoc
 from datetime import datetime, timedelta
@@ -113,7 +115,14 @@ def delete_event(request, event_id):
         return redirect(reverse('home'))
     
     event = get_object_or_404(EventList, pk=event_id)
-    event.delete()
-    messages.success(request, 'Event deleted!')
+    try:
+        event.delete()
+        messages.success(request, 'Event deleted!')
+    except Exception as e:
+        if ProtectedError:
+            messages.error(request, 'Event cannot be deleted as Orders exist!')
+        else:
+            messages.error(request, 'Failed to delete Event!')
+    
     
     return redirect(reverse('events'))
