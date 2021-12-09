@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import ProtectedError
 
 
-from .models import EventList, PickLoc
+from .models import EventList, PickLoc, Destination
 from datetime import datetime, timedelta
 
 from .forms import EventListForm
@@ -36,22 +36,36 @@ def all_events(request):
             'event_date') 
 
     query = None
+    locations = None
 
     if request.GET:
+
+        if 'location' in request.GET:
+            locations = request.GET['location'].split(',')
+            events = EventList.objects.filter(event_dest__destination__in=locations, \
+                event_date__range=[from_date, to_date], \
+                publish=True).order_by('event_date')
+            locations = Destination.objects.filter(destination__in=locations)
+
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
                 messages.error(request, "You didn't enter any search criteria!")
                 return redirect(reverse('events'))
             
-            queries = Q(name__icontains=query) | Q(description__icontains=query) | Q(event_dest__friendly_name__icontains=query) | Q(event_type__friendly_name__icontains=query)
-            events = EventList.objects.filter(queries)
-    
-    
-  
+            queries = Q(name__icontains=query) \
+                    | Q(description__icontains=query) \
+                    | Q(event_dest__friendly_name__icontains=query) \
+                    | Q(event_type__friendly_name__icontains=query)
+
+            events = EventList.objects.filter(queries, \
+                event_date__range=[from_date, to_date], \
+                    publish=True).order_by('event_date')
+
     context = {
         'events':events,
-        'search_term': query
+        'search_term': query,
+        'current_locations': locations,
     }
 
     return render(request, 'events/events.html', context)

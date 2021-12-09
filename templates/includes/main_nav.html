@@ -17,10 +17,11 @@
                 Location
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="clothing-link">
-                <a href="" class="dropdown-item">3Arena</a>
-                <a href="" class="dropdown-item">Aviva Stadium</a>
-                <a href="" class="dropdown-item">Croke Park</a>
-                <a href="" class="dropdown-item">All Locations</a>
+                <a href="{% url 'events' %}?location=3Arena,Aviva Stadium,Croke Park,Malahide Castle,Dundrum Town Center" class="dropdown-item">Dublin</a>
+                <a href="{% url 'events' %}?location=Pairc UÍ Chaoimh,Irish Independent Park" class="dropdown-item">Cork</a>
+                <a href="{% url 'events' %}?location=INEC" class="dropdown-item">Killarney</a>
+                <a href="{% url 'events' %}?location=Thomond Park" class="dropdown-item">Limerick</a>
+                <a href="{% url 'events' %}" class="dropdown-item">All Locations</a>
             </div>
         </li>
 
