@@ -9,7 +9,7 @@ class EventListForm(forms.ModelForm):
         model = EventList
         fields = '__all__'
 
-        image = forms.ImageField(label='image', required=False, widget=CustomClearableFileInput)
+    image = forms.ImageField(label='image', required=False, widget=CustomClearableFileInput)
         
         
     def __init__(self, *args, **kwargs):
