@@ -15,7 +15,6 @@ from .forms import EventListForm
 def all_events(request):
     ''' a view to show all events, inc sorting and search query'''
 
-
     # get all events with an event date bewtween today and today+days_to_show
     # and where publish = true
     if hasattr(settings, 'DAYS_TO_SHOW'):
@@ -25,11 +24,7 @@ def all_events(request):
     
     from_date = datetime.today().date()
     to_date = from_date + timedelta(days=days_to_show)
-    print (from_date)
-    print (to_date)
     
-    
-
     events = EventList.objects.filter(
         event_date__range=[from_date, to_date],
             publish=True).order_by(
@@ -39,7 +34,6 @@ def all_events(request):
     locations = None
 
     if request.GET:
-
         if 'location' in request.GET:
             locations = request.GET['location'].split(',')
             events = EventList.objects.filter(event_dest__destination__in=locations, \
