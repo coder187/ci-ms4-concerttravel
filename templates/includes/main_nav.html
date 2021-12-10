@@ -14,13 +14,27 @@
 
         <li class="nav-item dropdown">
             <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="clothing-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Location
+                Event Type
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="clothing-link">
-                <a href="{% url 'events' %}?location=3Arena,Aviva Stadium,Croke Park,Malahide Castle,Dundrum Town Center" class="dropdown-item">Dublin</a>
+                <a href="{% url 'events' %}?event_type=Concert, Festival" class="dropdown-item">Live Music</a>
+                <a href="{% url 'events' %}?event_type=Sporting" class="dropdown-item">Live Sport</a>
+                <a href="{% url 'events' %}?event_type=Shopping,Day Trip" class="dropdown-item">Day Trips</a>
+                <a href="{% url 'events' %}" class="dropdown-item">All Journeys</a>
+            </div>
+        </li>
+
+        <li class="nav-item dropdown">
+            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="clothing-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Venue
+            </a>
+            <div class="dropdown-menu border-0" aria-labelledby="clothing-link">
+                <a href="{% url 'events' %}?location=3Arena,Aviva Stadium,Malahide Castle,Croke Park,3Olympia" class="dropdown-item">Dublin</a>
                 <a href="{% url 'events' %}?location=Pairc UÍ Chaoimh,Irish Independent Park" class="dropdown-item">Cork</a>
-                <a href="{% url 'events' %}?location=INEC" class="dropdown-item">Killarney</a>
-                <a href="{% url 'events' %}?location=Thomond Park" class="dropdown-item">Limerick</a>
+                <a href="{% url 'events' %}?location=" class="dropdown-item">Belfast</a>
+                <a href="{% url 'events' %}?location=" class="dropdown-item">UK</a>
+                <a href="{% url 'events' %}?location=" class="dropdown-item">Galway</a>
+                <a href="{% url 'events' %}?location=" class="dropdown-item">Limerick</a>
                 <a href="{% url 'events' %}" class="dropdown-item">All Locations</a>
             </div>
         </li>

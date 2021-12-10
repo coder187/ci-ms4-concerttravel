@@ -15,8 +15,15 @@
 <div class="overlay"></div>
 <div class="container-fluid">
     <div class="row">
-        
-    </div>
+        <div class="col text-center mt-3">
+            <h2 class="logo-font">Events</h2>
+            {% for l in current_locations %}
+                <a class="category-badge text-decoration-none" href="{% url 'events' %}?location={{ l.destination }}">
+                    <span class="p-2 mt-2 badge badge-white text-black rounded-0 border border-dark">{{ l.friendly_name }}</span>
+                </a>
+            {% endfor %}
+        <hr class="w-50 mb-1">
+        </div>
     <div class="row">
         <div class="product-container col-10 offset-1">
             

@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import ProtectedError
 
 
-from .models import EventList, PickLoc, Destination
+from .models import EventList, PickLoc, Destination, EventType
 from datetime import datetime, timedelta
 
 from .forms import EventListForm
@@ -32,6 +32,7 @@ def all_events(request):
 
     query = None
     locations = None
+    types = None
 
     if request.GET:
         if 'location' in request.GET:
@@ -40,6 +41,14 @@ def all_events(request):
                 event_date__range=[from_date, to_date], \
                 publish=True).order_by('event_date')
             locations = Destination.objects.filter(destination__in=locations)
+
+        if 'event_type' in request.GET:
+            types = request.GET['event_type'].split(',')
+            events = EventList.objects.filter(event_type__event_type__in=types, \
+                event_date__range=[from_date, to_date], \
+                publish=True).order_by('event_date')
+            types = EventType.objects.filter(event_type__in=types)
+        
 
         if 'q' in request.GET:
             query = request.GET['q']
