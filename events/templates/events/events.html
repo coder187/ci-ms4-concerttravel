@@ -17,11 +17,28 @@
     <div class="row">
         <div class="col text-center mt-3">
             <h2 class="logo-font">Events</h2>
-            {% for l in current_locations %}
-                <a class="category-badge text-decoration-none" href="{% url 'events' %}?location={{ l.destination }}">
-                    <span class="p-2 mt-2 badge badge-white text-black rounded-0 border border-dark">{{ l.friendly_name }}</span>
+            {% if current_locations|length == 1%}
+                <a class="category-badge text-decoration-none" href="{% url 'events' %}">
+                    <span class="p-2 mt-2 badge badge-white text-black rounded-0 border border-dark">All Events</span>
                 </a>
-            {% endfor %}
+            {% else %}
+                {% for l in current_locations %}
+                    <a class="category-badge text-decoration-none" href="{% url 'events' %}?location={{ l.destination }}">
+                        <span class="p-2 mt-2 badge badge-white text-black rounded-0 border border-dark">{{ l.friendly_name }}</span>
+                    </a>
+                {% endfor %}
+            {% endif %}
+            {% if current_types|length == 1%}
+                <a class="category-badge text-decoration-none" href="{% url 'events' %}">
+                    <span class="p-2 mt-2 badge badge-white text-black rounded-0 border border-dark">All Events</span>
+                </a>
+            {% else %}
+                {% for t in current_types %}
+                    <a class="category-badge text-decoration-none" href="{% url 'events' %}?event_type={{ t.event_type }}">
+                        <span class="p-2 mt-2 badge badge-white text-black rounded-0 border border-dark">{{ t.friendly_name }}</span>
+                    </a>
+                {% endfor %}
+            {% endif %}
         <hr class="w-50 mb-1">
         </div>
     <div class="row">

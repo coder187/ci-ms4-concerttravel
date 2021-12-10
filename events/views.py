@@ -69,6 +69,7 @@ def all_events(request):
         'events':events,
         'search_term': query,
         'current_locations': locations,
+        'current_types':types,
     }
 
     return render(request, 'events/events.html', context)
