@@ -2,12 +2,12 @@
     <ul class="navbar-nav w-auto mx-auto">
         <li class="nav-item dropdown">
             <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="all-products-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                All Events
+                Events
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="all-products-link">
-                <a href="" class="dropdown-item">By Venue</a>
-                <a href="" class="dropdown-item ">By Date</a>
-                <a href="" class="dropdown-item ">By Artist</a>
+                <a href="{% url 'events' %}?sort=name&direction=asc" class="dropdown-item ">By Artist</a>
+                <a href="{% url 'events' %}?sort=event_date&direction=asc" class="dropdown-item">By Date</a>
+                <a href="{% url 'events' %}?sort=event_dest&direction=asc" class="dropdown-item ">By Venue</a>
                 <a href="{% url 'events' %}" class="dropdown-item">All Events</a>
             </div>
         </li>
@@ -26,7 +26,7 @@
 
         <li class="nav-item dropdown">
             <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="clothing-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Venue
+                Location
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="clothing-link">
                 <a href="{% url 'events' %}?location=3Arena,Aviva Stadium,Malahide Castle,Croke Park,3Olympia" class="dropdown-item">Dublin</a>

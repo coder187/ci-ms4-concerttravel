@@ -4,6 +4,8 @@ from django.db.models import Q
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.db.models import ProtectedError
+from django.db.models.functions import Lower
+
 
 
 from .models import EventList, PickLoc, Destination, EventType
@@ -33,8 +35,25 @@ def all_events(request):
     query = None
     locations = None
     types = None
+    sort = None
+    direction = None
 
     if request.GET:
+
+        if 'sort' in request.GET:
+            sortkey = request.GET['sort']
+            sort = sortkey
+            if sortkey == 'name':
+                sortkey = 'lower_name'
+                events = events.annotate(lower_name=Lower('name'))
+
+            if 'direction' in request.GET:
+                direction = request.GET['direction']
+                if direction == 'desc':
+                    sortkey = f'-{sortkey}'
+            events = events.order_by(sortkey)
+
+
         if 'location' in request.GET:
             locations = request.GET['location'].split(',')
             events = EventList.objects.filter(event_dest__destination__in=locations, \
