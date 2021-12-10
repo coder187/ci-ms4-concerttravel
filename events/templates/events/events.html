@@ -51,7 +51,9 @@
 
                             <!--card body -->
                             <div class="card-body pb-0">
-                                <p class="mb-0">{{ event.name }}</p>
+                                <p class="mb-0">{{ event.name }} </p>
+                                <p class="mb-0">{{ event.event_dest.friendly_name }} </p>
+                                <p class="mb-0">{{ event.decription }}</p>
                             </div>
 
                             <!--card footer -->
@@ -66,6 +68,17 @@
                                             </small>
                                         {% endif %}
                                     </div>
+                                    <div class="col">
+                                        
+                                        {% if event.event_dest %}
+                                        <p class="small mt-1 mb-0">
+                                            <a class="text-muted" href="{% url 'events' %}?location={{ event.event_dest.destination }}">
+                                                <i class="fas fa-tag mr-1"></i>{{ event.event_dest.friendly_name }}
+                                            </a>
+                                        </p>
+                                        {% endif %}
+
+                                    </div>
                                 </div>
                             </div>
 
@@ -78,3 +91,4 @@
     </div>
 </div>
 {% endblock %}
+xx
