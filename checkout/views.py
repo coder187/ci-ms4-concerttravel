@@ -48,9 +48,7 @@ def checkout(request):
 
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
-    #print('keys:') 
-    #print(stripe_public_key)
-    #print(stripe_secret_key)
+    
     bag = request.session.get('bag', {})
 
     if request.method == 'POST':
@@ -121,8 +119,8 @@ def checkout(request):
                 Please double check your information.')
 
     else:
-        print('START STRIPE INTENT')
-        print(datetime.datetime.now())
+        #print('START STRIPE INTENT')
+        # print(datetime.datetime.now())
         if not bag:
             messages.error(request, "There's nothing in your bag at the moment")
             return redirect(reverse('events'))
@@ -137,11 +135,25 @@ def checkout(request):
             currency=settings.STRIPE_CURRENCY,
             )
         # print(intent)
-       
+        profile = UserProfile.objects.get(user=request.user)
+        print (profile.user.get_full_name())
+        print (profile.user.email)
+        print (profile.default_phone_number)
+        print (profile.default_country)
+        print (profile.default_postcode)
+        print (profile.default_town_or_city)
+        print (profile.default_street_address1)
+        print (profile.default_street_address2)
+        print (profile.default_county)
+        if request.user.is_authenticated:
+            print ('is_authenticated')
+
          # Attempt to prefill the form with any info the user maintains in their profile
         if request.user.is_authenticated:
             try:
                 profile = UserProfile.objects.get(user=request.user)
+                print ('oderform start')
+
                 order_form = OrderForm(initial={
                     'full_name': profile.user.get_full_name(),
                     'email': profile.user.email,
@@ -153,8 +165,11 @@ def checkout(request):
                     'street_address2': profile.default_street_address2,
                     'county': profile.default_county,
                 })
+                print ('oderform end')
             except UserProfile.DoesNotExist:
+                print ('profile not fond')
                 order_form = OrderForm()
+
         else:
              # load a blank order form
             order_form = OrderForm()
