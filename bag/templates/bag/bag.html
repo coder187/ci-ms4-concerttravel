@@ -161,8 +161,7 @@
     
         var url = `/bag/remove/${itemId}/`; 
         var data = {'csrfmiddlewaretoken': csrfToken}; //csrfToken special key.
-        console.log('url')
-        console.log(url)
+        
         $.post(url, data)
          .done(function() { //when done reload the page
              location.reload();
