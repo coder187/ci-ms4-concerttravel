@@ -20,6 +20,8 @@ discount when ticket purch >10
 date format on date picker
 add name to profile page.
 add if cond to events to show events where publish = false for superuser.
+SWITCH DEBUG TO FALSE
+
 
 
 force rebuild 4

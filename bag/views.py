@@ -42,12 +42,19 @@ def add_to_bag(request, event_id):
 def adjust_bag(request, combination_key):
     '''Adjust the ticket qty for the given event to the specified quantity '''
 
+    event_id = combination_key.split(":")[0]
+    event = get_object_or_404(EventList, pk=event_id)
+    formatted_eventdate = event.event_date.strftime("%b/%d")
+
+    pickloc_id = combination_key.split(":")[1]
+    pick_loc_desc = get_object_or_404(PickLoc, pk=pickloc_id)
+
     qty = int(request.POST.get('quantity'))
     bag = request.session.get('bag', {})
 
     if qty > 0:
         bag[combination_key] = qty
-        messages.success(request, f'Updated {event.name} {formatted_eventdate} [{pick_loc_desc}]')
+        messages.success(request, f'Updated {event.name} {formatted_eventdate} [{pick_loc_desc}] to {qty} tickets')
     else:
         bag.pop(combination_key)
         messages.success(request, f'Removed {event.name} {formatted_eventdate} from your bag.')
@@ -60,6 +67,13 @@ def remove_from_bag(request, combination_key):
     '''Remove the ticket from the shopping bag '''
 
     try:
+
+        event_id = combination_key.split(":")[0]
+        event = get_object_or_404(EventList, pk=event_id)
+        formatted_eventdate = event.event_date.strftime("%b/%d")
+
+        pickloc_id = combination_key.split(":")[1]
+        pick_loc_desc = get_object_or_404(PickLoc, pk=pickloc_id)
 
         bag = request.session.get('bag', {})
 

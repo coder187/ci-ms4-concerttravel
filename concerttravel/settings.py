@@ -211,7 +211,7 @@ if 'USE_AWS' in os.environ:
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 FREE_TICKET_THRESHOLD = 10
-STANDARD_DELIVERY_PERCENTAGE = 10
+# STANDARD_DELIVERY_PERCENTAGE = 10
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
 # Stripe
