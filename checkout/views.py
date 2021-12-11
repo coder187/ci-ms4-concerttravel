@@ -141,20 +141,6 @@ def checkout(request):
             )
         # print(intent)
 
-        if request.user.is_authenticated:
-            print ('is_authenticated')
-            profile = UserProfile.objects.get(user=request.user)
-            print (profile.user.get_full_name())
-            print (profile.user.email)
-            print (profile.default_phone_number)
-            print (profile.default_country)
-            print (profile.default_postcode)
-            print (profile.default_town_or_city)
-            print (profile.default_street_address1)
-            print (profile.default_street_address2)
-            print (profile.default_county)
-
-
          # Attempt to prefill the form with any info the user maintains in their profile
         if request.user.is_authenticated:
             try:

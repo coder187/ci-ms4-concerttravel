@@ -2,6 +2,7 @@ import uuid
 
 from django.db import models
 from django.db.models import Sum
+from django.conf import settings
 
 from django_countries.fields import CountryField
 
@@ -26,7 +27,12 @@ class Order(models.Model):
     original_bag = models.TextField(null=False, blank=False, default='')
     stripe_pid = models.CharField(max_length=254, null=False, blank=False, default='')
     user_profile = models.ForeignKey(UserProfile, on_delete=models.SET_NULL,
-                                     null=True, blank=True, related_name='orders')
+                                     null=True, blank=True, related_name='orders')                      
+    discount = models.DecimalField(max_digits=6, decimal_places=2,
+                                        null=False, default=0)
+    grand_total = models.DecimalField(max_digits=10, decimal_places=2,
+                                      null=False, default=0)
+    
 
     def _generate_order_number(self): # use of _ indictes private method only to be used inside this class.
         """
@@ -37,9 +43,18 @@ class Order(models.Model):
     def update_total(self):
         """
         Update grand total each time a line item is added,
-        accounting for delivery costs.
+        accounting for discount applied.
         """
-        self.order_total = self.lineitems.aggregate(Sum('price'))['price__sum'] or 0
+        self.order_total = self.lineitems.aggregate(
+            Sum('price'))['price__sum'] or 0
+        
+        if self.order_total > settings.DISCOUNT_THRESHOLD:
+            sdp = settings.STANDARD_DISCOUNT_PERCENTAGE
+            self.discount = self.order_total * sdp / 100
+        else:
+            self.discount = 0
+        
+        self.grand_total = self.order_total - self.discount
         self.save()
         
     def save(self, *args, **kwargs):

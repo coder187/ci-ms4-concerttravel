@@ -15,10 +15,10 @@ class OrderAdmin(admin.ModelAdmin):
     fields = ('order_number', 'user_profile', 'date', 'full_name','email',
                 'phone_number', 'country', 'postcode', 'town_or_city',
                 'street_address1','street_address2',
-                'county','order_total',
+                'county','order_total','discount','grand_total',
                 'original_bag','stripe_pid')# To restrict the columns that show up in the order list to only a few key items.
-    list_display = ('order_number', 'id', 'date', 'full_name','order_total')
+    list_display = ('order_number', 'id', 'date', 'full_name','order_total','discount','grand_total')
 
-    ordering = ('-date',)
+    ordering = ('-id',)
 
 admin.site.register(Order, OrderAdmin)
