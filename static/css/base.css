@@ -101,6 +101,10 @@ a.category-badge > span.badge:hover {
     cursor: pointer;
 }
 
+input[name='q']::placeholder {	
+    color: #aab7c4;	
+}
+
 /* ------------------------------- bootstrap toasts */
 
 .message-container {
@@ -168,7 +172,6 @@ a.category-badge > span.badge:hover {
     overflow-x: hidden;
     overflow-y: auto;
 }
-
 
 
 /* Allauth form formatting */
