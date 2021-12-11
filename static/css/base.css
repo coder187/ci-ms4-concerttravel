@@ -255,9 +255,31 @@ a.category-badge > span.badge:hover {
     border-radius: 0;
 }
 
+/*---------------events footer --- */
+
+
+.popular{
+    color:orangered;
+}
+
+
+/*https://itqna.net/questions/23180/create-blinking-fontawesone-effect*/
+@keyframes fa-blink {
+    0% { opacity: 1; }
+   
+    50% { opacity: .5; }
+
+    100% { opacity: 0; }
+}
+.fa-blink {
+  -webkit-animation: fa-blink .99s linear infinite;
+  -moz-animation: fa-blink .99s linear infinite;
+  -ms-animation: fa-blink .99s linear infinite;
+  -o-animation: fa-blink .99s linear infinite;
+  animation: fa-blink .99s linear infinite;
+}
 
 /*---------------carousel caption --- */
-
 
 .carousel-caption {
     top: 0;

@@ -5,10 +5,11 @@ from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.db.models import ProtectedError
 from django.db.models.functions import Lower
-
+from django.db.models import Count
 
 
 from .models import EventList, PickLoc, Destination, EventType
+from checkout.models import Order, OrderLineItem 
 from datetime import datetime, timedelta
 
 from .forms import EventListForm
@@ -41,7 +42,19 @@ def all_events(request):
                 'event_date')
 
     
+    # query for total tickets per event
+    ticket_totals_per_event = EventList.objects.filter(publish=True).annotate(number_of_tickets=Count('eventrecord'))
 
+    t_sum = 0
+    t_count = 0
+    average_tickets = 0
+    if ticket_totals_per_event.count() > 0:
+        for t in ticket_totals_per_event:
+            t_sum = t_sum + t.number_of_tickets
+            t_count +=1
+    
+    average_tickets = t_sum/t_count
+        
     query = None
     locations = None
     types = None
@@ -109,6 +122,9 @@ def all_events(request):
         'search_term': query,
         'current_locations': locations,
         'current_types':types,
+        'ticket_totals_per_event':ticket_totals_per_event,
+        'average_tickets':average_tickets
+
     }
 
     return render(request, 'events/events.html', context)

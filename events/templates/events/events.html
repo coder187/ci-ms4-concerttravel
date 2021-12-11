@@ -14,6 +14,7 @@
 {% block content %}
 <div class="overlay"></div>
 <div class="container-fluid">
+
     <div class="row">
         <div class="col text-center mt-3">
             <h2 class="logo-font">Events</h2>
@@ -133,9 +134,24 @@
                                                 </p>
                                             {% endif %}
                                         {% else %}
-                                            <a href="{% url 'event_detail' event.id %}">
-                                                <i class="fas fa-fire"></i>
-                                            </a>                           
+                                            
+                                      
+                                            {% for t in ticket_totals_per_event %}
+                                                {% if t.id == event.id %}
+                                                    {% if t.number_of_tickets > average_tickets %}
+                                                        
+                                                    <a href="{% url 'event_detail' event.id %}">
+                                                        <i class="fa fa-heart fa-blink popular"></i>
+                                                    </a>
+                                                  
+                                                    {% else %}
+                                                        <a href="{% url 'event_detail' event.id %}">
+                                                            <i class="far fa-heart"></i>
+                                                       
+                                                        </a>
+                                                    {% endif %}
+                                                {%endif%}
+                                            {% endfor %}
                                         {% endif %}
                                     </div>
                                 </div>

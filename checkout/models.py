@@ -74,7 +74,7 @@ class Order(models.Model):
 class OrderLineItem(models.Model):
     ticket_no = models.AutoField(primary_key=True)
     order = models.ForeignKey(Order, null=False, blank=False, on_delete=models.PROTECT, related_name='lineitems')
-    event = models.ForeignKey(EventList, null=False, blank=False, on_delete=models.PROTECT)
+    event = models.ForeignKey(EventList, null=False, blank=False, on_delete=models.PROTECT,related_name='eventrecord')
     pickloc = models.ForeignKey(PickLoc, null=False, blank=False, on_delete=models.PROTECT)
     price = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False, default=0)
     pax_fullname = models.CharField(max_length=50, null=True, blank=True)
