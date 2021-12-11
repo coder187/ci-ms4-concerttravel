@@ -52,8 +52,8 @@ def checkout(request):
     bag = request.session.get('bag', {})
 
     if request.method == 'POST':
-        print('POST VALIDATNG FORM')
-        print(datetime.datetime.now())
+        # print('POST VALIDATNG FORM')
+        # print(datetime.datetime.now())
    
         # capture order header from the form
         form_data = {
@@ -126,7 +126,12 @@ def checkout(request):
             return redirect(reverse('events'))
 
         current_bag = bag_contents(request)
+        for t in current_bag:
+            print (t)
+        print (current_bag['product_count'])
         total = current_bag['grand_total']
+        print ('total')
+        print (total)
         stripe_total = round(total * 100)
 
         stripe.api_key = stripe_secret_key
@@ -135,18 +140,20 @@ def checkout(request):
             currency=settings.STRIPE_CURRENCY,
             )
         # print(intent)
-        profile = UserProfile.objects.get(user=request.user)
-        print (profile.user.get_full_name())
-        print (profile.user.email)
-        print (profile.default_phone_number)
-        print (profile.default_country)
-        print (profile.default_postcode)
-        print (profile.default_town_or_city)
-        print (profile.default_street_address1)
-        print (profile.default_street_address2)
-        print (profile.default_county)
+
         if request.user.is_authenticated:
             print ('is_authenticated')
+            profile = UserProfile.objects.get(user=request.user)
+            print (profile.user.get_full_name())
+            print (profile.user.email)
+            print (profile.default_phone_number)
+            print (profile.default_country)
+            print (profile.default_postcode)
+            print (profile.default_town_or_city)
+            print (profile.default_street_address1)
+            print (profile.default_street_address2)
+            print (profile.default_county)
+
 
          # Attempt to prefill the form with any info the user maintains in their profile
         if request.user.is_authenticated:
