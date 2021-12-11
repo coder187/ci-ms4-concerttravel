@@ -12,7 +12,7 @@ from .models import EventList, PickLoc, Destination, EventType
 from checkout.models import Order, OrderLineItem 
 from datetime import datetime, timedelta
 
-from .forms import EventListForm
+from .forms import EventListForm, PickLocsForm
 
 # Create your views here.
 def all_events(request):
@@ -217,3 +217,28 @@ def delete_event(request, event_id):
     
     
     return redirect(reverse('events'))
+
+@login_required
+def add_pick(request):
+    """ Add a pick up loaction """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect(reverse('home'))
+
+    if request.method == 'POST':
+        form = PickLocsForm(request.POST)
+        if form.is_valid():
+            pick = form.save()
+            messages.success(request, 'Successfully added pick location!')
+            return redirect(reverse('events'))
+        else:
+            messages.error(request, 'Failed to add pick location. Please ensure the form is valid.')
+    else:
+        form = PickLocsForm()
+
+    template = 'events/add_pick.html'
+    context = {
+        'form': form,
+    }
+
+    return render(request, template, context)

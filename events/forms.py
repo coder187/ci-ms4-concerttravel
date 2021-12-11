@@ -24,4 +24,19 @@ class EventListForm(forms.ModelForm):
         self.fields['event_dest'].choices = dest_friendly_names
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'border-black rounded-0'
+
+class PickLocsForm(forms.ModelForm):
+
+    
+    class Meta:
+        model = PickLoc
+        fields = '__all__'
+
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        picklocs = PickLoc.objects.all()
+        
+        for field_name, field in self.fields.items():
+            field.widget.attrs['class'] = 'border-black rounded-0'
             
