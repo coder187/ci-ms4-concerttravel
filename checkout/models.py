@@ -53,8 +53,10 @@ class Order(models.Model):
             self.discount = self.order_total * sdp / 100
         else:
             self.discount = 0
+         
         
         self.grand_total = self.order_total - self.discount
+        print(self.discount)
         self.save()
         
     def save(self, *args, **kwargs):
