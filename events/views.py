@@ -17,6 +17,9 @@ from .forms import EventListForm
 def all_events(request):
     ''' a view to show all events, inc sorting and search query'''
 
+
+    # build a list of total tickes sold per event
+
     # get all events with an event date bewtween today and today+days_to_show
     # and where publish = true
     if hasattr(settings, 'DAYS_TO_SHOW'):
@@ -27,10 +30,17 @@ def all_events(request):
     from_date = datetime.today().date()
     to_date = from_date + timedelta(days=days_to_show)
     
-    events = EventList.objects.filter(
-        event_date__range=[from_date, to_date],
-            publish=True).order_by(
-            'event_date') 
+    if request.user.is_superuser:
+         events = EventList.objects.filter(
+            event_date__range=[from_date, to_date]).order_by(
+                'event_date')
+    else:   
+        events = EventList.objects.filter(
+            event_date__range=[from_date, to_date],
+                publish = True).order_by(
+                'event_date')
+
+    
 
     query = None
     locations = None
@@ -39,7 +49,6 @@ def all_events(request):
     direction = None
 
     if request.GET:
-
         if 'sort' in request.GET:
             sortkey = request.GET['sort']
             sort = sortkey
@@ -54,18 +63,29 @@ def all_events(request):
             events = events.order_by(sortkey)
 
 
+        
         if 'location' in request.GET:
             locations = request.GET['location'].split(',')
-            events = EventList.objects.filter(event_dest__destination__in=locations, \
-                event_date__range=[from_date, to_date], \
-                publish=True).order_by('event_date')
+            if request.user.is_superuser:
+                events = EventList.objects.filter(event_dest__destination__in=locations, \
+                    event_date__range=[from_date, to_date]).order_by('event_date')
+            else:
+                events = EventList.objects.filter(event_dest__destination__in=locations, \
+                    event_date__range=[from_date, to_date], \
+                    publish=True).order_by('event_date')
+                
             locations = Destination.objects.filter(destination__in=locations)
 
         if 'event_type' in request.GET:
             types = request.GET['event_type'].split(',')
-            events = EventList.objects.filter(event_type__event_type__in=types, \
-                event_date__range=[from_date, to_date], \
-                publish=True).order_by('event_date')
+            if request.user.is_superuser:
+                events = EventList.objects.filter(event_type__event_type__in=types, \
+                    event_date__range=[from_date, to_date]).order_by('event_date')
+            else:
+                events = EventList.objects.filter(event_type__event_type__in=types, \
+                    event_date__range=[from_date, to_date], \
+                    publish=True).order_by('event_date')
+                
             types = EventType.objects.filter(event_type__in=types)
         
 

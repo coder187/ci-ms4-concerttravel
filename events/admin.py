@@ -13,7 +13,8 @@ class EventListAdmin(admin.ModelAdmin):
         'description',
         'event_dest',
         'image',
-        'image_url'
+        'image_url',
+        'publish'
     )
 
     ordering = ('event_date', 'name')

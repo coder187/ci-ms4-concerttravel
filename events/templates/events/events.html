@@ -117,6 +117,27 @@
                                         {% endif %}
 
                                     </div>
+                                    <div class="col">
+                                        {% if request.user.is_superuser %}
+                                            {% if event.publish == False  %}
+                                                <p class="small mt-1 mb-0">
+                                                    <a href="{% url 'edit_event' event.id %}">
+                                                        <i class="fas fa-eye-slash"></i>
+                                                    </a>                                            
+                                                </p>
+                                            {% else %}
+                                                <p class="small mt-1 mb-0">
+                                                    <a href="{% url 'edit_event' event.id %}">
+                                                        <i class="fas fa-eye"></i>
+                                                    </a>                                            
+                                                </p>
+                                            {% endif %}
+                                        {% else %}
+                                            <a href="{% url 'event_detail' event.id %}">
+                                                <i class="fas fa-fire"></i>
+                                            </a>                           
+                                        {% endif %}
+                                    </div>
                                 </div>
                             </div>
 
