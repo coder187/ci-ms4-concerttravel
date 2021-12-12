@@ -332,3 +332,10 @@ input[name='q']::placeholder {
         height: calc(100vh - 116px);
     }
 }
+
+@media (max-width: 450px) {
+    .logo-font {
+        font-size: medium;
+    }
+}
+
