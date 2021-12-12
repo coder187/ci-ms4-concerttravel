@@ -4,6 +4,11 @@ This is a confirmation of your order at ConcertTravel.com. Your order informatio
 Order Number: {{ order.order_number }}
 Order Date: {{ order.date }}
 
+Tickets On This Order:
+{% for l in ol %}
+    {{l.ticket_no}}
+{%endfor%}
+
 Order Total: €{{ order.order_total }}
 Disoucnt: €{{ order.discount }}
 Grand Total: €{{ order.grand_total }}
@@ -20,8 +25,3 @@ Sincerely,
 
 Concert Travel
 
-{% for l in ol %}
-    {{l.order}}
-    {{l.ticket_no}}
-
-{%endfor%}
