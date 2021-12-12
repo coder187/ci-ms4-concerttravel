@@ -23,6 +23,7 @@ def all_events(request):
 
     # get all events with an event date bewtween today and today+days_to_show
     # and where publish = true
+    
     if hasattr(settings, 'DAYS_TO_SHOW'):
         days_to_show = int(settings.DAYS_TO_SHOW)
     else:

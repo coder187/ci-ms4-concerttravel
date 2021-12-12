@@ -22,12 +22,10 @@ class StripeWH_Handler:
     def _send_confirmation_email(self, order):
         """Send the user a confirmation email"""
         print ('send email started')
-        
-        ol = OrderLineItem.objects.filter(order==order.order_number).order_by('ticket_no')
-         # t = EventList.objects.filter(publish=True).annotate(number_of_tickets=Count('eventrecord'))
         print (order.order_number)
-        print (ol.count())
 
+        ol = OrderLineItem.objects.filter(order_id=order.id).order_by('-ticket_no')
+          
         cust_email = order.email
         subject = render_to_string(
             'checkout/confirmation_emails/confirmation_email_subject.txt',
