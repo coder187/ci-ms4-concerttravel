@@ -6,7 +6,7 @@ Order Date: {{ order.date }}
 
 Tickets On This Order:
 {% for l in ol %}
-    Ticket #:{{l.ticket_no}} :  {{l.eventrecord.name }} : {{l.eventrecord.event_date }} : {{l.pickloc }} : {{l.price }}
+    Ticket #:{{l.ticket_no}} :  {{l.event.name }} : {{l.event.event_date }} : {{l.pickloc }} : {{l.price }}
 {%endfor%}
 
 Order Total: €{{ order.order_total }}

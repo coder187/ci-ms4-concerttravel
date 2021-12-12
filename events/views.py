@@ -23,6 +23,7 @@ def all_events(request):
 
     # get all events with an event date bewtween today and today+days_to_show
     # and where publish = true
+
     
     if hasattr(settings, 'DAYS_TO_SHOW'):
         days_to_show = int(settings.DAYS_TO_SHOW)
@@ -249,7 +250,7 @@ def add_pick(request):
 @login_required
 def edit_pick(request,pick_id):
     """ Edit a pick up location in the store """
-    print ('edit pick started')
+    # print ('edit pick started')
 
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
