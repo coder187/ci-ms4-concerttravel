@@ -23,7 +23,7 @@ class StripeWH_Handler:
         """Send the user a confirmation email"""
         print ('send email started')
         
-        ol = OrderLineItem.objects.filter(order==order.order_number).order_by(ticket_no)
+        ol = OrderLineItem.objects.filter(order==order.order_number).order_by('ticket_no')
          # t = EventList.objects.filter(publish=True).annotate(number_of_tickets=Count('eventrecord'))
         print (order.order_number)
         print (ol.count())
