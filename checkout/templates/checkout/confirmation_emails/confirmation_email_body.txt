@@ -19,3 +19,7 @@ Thank you for your order!
 Sincerely,
 
 Concert Travel
+
+{% for l in ol %}
+    {{l.ticketno}}
+{%endfor%}
