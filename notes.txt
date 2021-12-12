@@ -23,6 +23,26 @@ add if cond to events to show events where publish = false for superuser.
 SWITCH DEBUG TO FALSE
 save fname and sname on register - todo extend allauth SignupForm to inc fname and lastname.
 
+edit picklocs
+<script>
+    // The ready event handler is called after the page is ready.
+    $().ready(function () {
+        $('#alink').click(function(e) {
+            e.preventDefault();
+            
+            var box = document.getElementById('id_pick-loc');
+            var id = box.options[box.selectedIndex].value;
+
+            ar url = "{% url 'edit_pick' " + id + " %}";
+            
+            //document.location.href = url + id;
+            
+            
+        });
+    });
+
+    
+</script>
 
 force rebuild 4
 qjuestuin:

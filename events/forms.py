@@ -27,11 +27,9 @@ class EventListForm(forms.ModelForm):
 
 class PickLocsForm(forms.ModelForm):
 
-    
     class Meta:
         model = PickLoc
         fields = '__all__'
-
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

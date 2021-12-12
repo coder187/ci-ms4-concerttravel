@@ -235,10 +235,60 @@ def add_pick(request):
             messages.error(request, 'Failed to add pick location. Please ensure the form is valid.')
     else:
         form = PickLocsForm()
+        picklocs = PickLoc.objects.all()
 
     template = 'events/add_pick.html'
     context = {
         'form': form,
+        'picklocs':picklocs,
     }
 
     return render(request, template, context)
+
+@login_required
+def edit_pick(request,pick_id):
+    """ Edit a pick up location in the store """
+    print ('edit pick started')
+
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect(reverse('home'))
+
+
+    pickloc = get_object_or_404(PickLoc,pk=pick_id)
+
+    if request.method == 'POST':
+        form = PickLocsForm(request.POST, instance=pickloc)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully updated pick location!')
+            return redirect(reverse('events'))
+        else:
+            messages.error(request, 'Failed to update pick location. Please ensure the form is valid.')
+    else:
+        form = PickLocsForm(instance=pickloc)
+        messages.info(request, f'You are editing {pickloc.location}')
+    
+    template = 'events/edit_pick.html'
+    context = {
+            'form': form,
+            'pickloc': pickloc,
+        }
+    return render(request, template, context )
+
+@login_required
+def delete_pick(request, pick_id):
+    """ Delete an pick location from the store """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect(reverse('home'))
+    
+    pickloc = get_object_or_404(PickLoc,pk=pick_id)
+    try:
+        pickloc.delete()
+        messages.success(request, 'Pick Location deleted!')
+    except Exception as e:
+        messages.error(request, 'Failed to delete Event!')
+    
+    
+    return redirect(reverse('events'))

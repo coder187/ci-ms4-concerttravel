@@ -4,7 +4,6 @@ from .models import EventList, EventType, PickLoc, Destination
 
 
 
-
 class EventListAdmin(admin.ModelAdmin):
     list_display = (
         'id',
@@ -19,8 +18,17 @@ class EventListAdmin(admin.ModelAdmin):
 
     ordering = ('event_date', 'name')
 
+class PickLocsAdmin(admin.ModelAdmin):
+    list_display = (
+        'id',
+        'location',
+        'pick_time',
+        'sort',
+        'fare'
+    )
+
 # Register your models here.
 admin.site.register(EventList, EventListAdmin)
 admin.site.register(EventType)
-admin.site.register(PickLoc)
+admin.site.register(PickLoc,PickLocsAdmin)
 admin.site.register(Destination)

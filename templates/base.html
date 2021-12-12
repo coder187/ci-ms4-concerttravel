@@ -74,7 +74,7 @@
                             {% if request.user.is_authenticated %}
                                 {% if request.user.is_superuser %}
                                     <a href="{% url 'add_event' %}" class="dropdown-item">Event Add</a>
-                                    <a href="{% url 'add_pick' %}" class="dropdown-item">Pick Locations Add</a>
+                                    <a href="{% url 'add_pick' %}" class="dropdown-item">Pick Locations Add/Edit</a>
                                 {% endif %}
                                 <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
                                 <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
