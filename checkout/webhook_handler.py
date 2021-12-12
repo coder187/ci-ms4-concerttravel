@@ -21,8 +21,8 @@ class StripeWH_Handler:
 
     def _send_confirmation_email(self, order):
         """Send the user a confirmation email"""
-        print ('send email started')
-        print (order.order_number)
+        # print ('send email started')
+        # print (order.order_number)
 
         ol = OrderLineItem.objects.filter(order_id=order.id).order_by('-ticket_no')
           
@@ -102,7 +102,7 @@ class StripeWH_Handler:
                     street_address2__iexact=shipping_details.address.line2,
                     county__iexact=shipping_details.address.state,
                     original_bag=bag,
-                    stripe_pid=pid, # why match on other fiekds when pid is unique?
+                    stripe_pid=pid, 
                 )
                 order_exists = True
                 break
