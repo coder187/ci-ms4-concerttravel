@@ -41,6 +41,7 @@ class StripeWH_Handler:
             settings.DEFAULT_FROM_EMAIL,
             [cust_email]
         )        
+        print ('send mail COMPLETED')
 
 
     def handle_event(self, event):
