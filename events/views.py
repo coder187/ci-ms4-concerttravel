@@ -134,7 +134,7 @@ def event_detail(request, event_id):
     ''' a view to show individual event'''
 
     event = get_object_or_404(EventList, pk=event_id)
-    picklocs = PickLoc.objects.all()
+    picklocs = PickLoc.objects.all().order_by('sort')
     context = {
             'event': event,
             'picklocs':picklocs
