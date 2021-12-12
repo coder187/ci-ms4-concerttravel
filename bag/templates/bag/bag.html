@@ -24,7 +24,43 @@
     <div class="row">
         <div class="col">
             {% if bag_items %}
-            <div class="table-responsive rounded">
+                <div class="d-block d-md-none">
+                    <div class="row">
+                        <div class="col">
+                            {% include "bag/bag-total.html" %}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            {% include "bag/checkout-buttons.html" %}
+                            <p class="text-muted mb-5">A summary of your bag contents is below</p>
+                        </div>
+                    </div>
+                {% for item in bag_items %}
+                    <div class="row">
+                        <div class="col-12 col-sm-6 mb-2">
+                            {% include "bag/product-image.html" %}
+                        </div>
+                        <div class="col-12 col-sm-6 mb-2">
+                            {% include "bag/product-info.html" %}
+                        </div>
+                        <div class="col-12 col-sm-6 order-sm-last">
+                            <p class="my-0">Price Each: €{{ item.product.price }}</p>
+                            
+                    </div>
+                    <div class="col-12 col-sm-6">
+                        {% include "bag/quantity-form.html" %}
+                    </div>
+                </div>
+                <div class="row"><div class="col"><hr></div></div>
+            {% endfor %}
+            <div class="btt-button shadow-sm rounded-0 border border-black">
+                <a class="btt-link d-flex h-100">
+                <i class="fas fa-arrow-up text-black mx-auto my-auto"></i>
+                </a>	
+                </div>
+        </div>
+            <div class="table-responsive rounded d-none d-md-block">
                 <table class="table table-sm table-borderless">
                     <thead class="text-black">
                         <tr>
@@ -39,20 +75,10 @@
                     {% for item in bag_items %}
                         <tr>
                             <td class="p-3 w-25"> <!-- IMAGE -->
-                                {% if item.eventlist.image %}
-                                    <img class="img-fluid rounded" src="{{ item.eventlist.image.url }}" alt="{{item.eventlist.name}}">
-                                {% else %}
-                                    {% if item.eventlist.image_url %}
-                                        <img class="img-fluid rounded" src="{{ item.eventlist.image_url }}" alt="{{item.eventlist.name}}">
-                                    {% else %}
-                                        <img class="img-fluid rounded" src="{{ MEDIA_URL }}noimage.png" alt="{{item.eventlist.name}}">
-                                    {% endif %}    
-                                {% endif %}
+                                {% include "bag/product-image.html" %} <!-- bag total -->
                             </td> 
                             <td class="py-3"> <!-- DESC -->
-                                <p class="my-0"><strong>{{ item.eventlist.name }}</strong></p>
-                                <p class="my-0"><strong>{{ item.eventlist.event_date }}</strong></p>
-                                <p class="my-0 small text-muted">{{ item.eventlist.description }}</p>
+                                {% include "bag/product-info.html" %} <!-- bag total -->
                             </td>
                             <td class="py-3"> <!-- PICK LOCK -->
                                 <p class="my-0">{{ item.pickloc_name }}</p>
@@ -61,37 +87,8 @@
                                 <p class="my-0">€{{ item.price_per_ticket }}</p>
                             </td>
                             <td class="py-3"> <!-- QTY -->
-                                <form class="form update-form" method="POST" action="{% url 'adjust_bag' item.combi_key %}"> 
-                                    {% csrf_token %}
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <button class="decrement-qty btn btn-sm btn-black rounded-0" 
-                                                    data-item_id="{{ item.event_id }}" id="decrement-qty_{{ item.event_id }}">
-                                                    <span>
-                                                        <i class="fas fa-minus fa-sm"></i>
-                                                    </span>
-                                                </button>
-                                            </div>
-                                            <input class="form-control form-control-sm qty_input" type="number"
-                                                name="quantity" value="{{ item.ticket_quantity }}" min="1" max="49"
-                                                data-item_id="{{ item.event_id }}"
-                                                id="id_qty_{{ item.event_id }}">
-                                                
-                                            <div class="input-group-append">
-                                                <button class="increment-qty btn btn-sm btn-black rounded-0"
-                                                    data-item_id="{{ item.event_id }}" id="increment-qty_{{ item.event_id }}">
-                                                    <span>
-                                                        <i class="fas fa-plus fa-sm"></i>
-                                                    </span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                </form>
-                                <a class="update-link text-info"><small>Update</small></a>
-                                <a class="remove-item text-danger float-right" id="remove_{{ item.combi_key }}"><small>Remove</small></a>
+                                {% include "bag/quantity-form.html" %} <!-- bag total -->
+         
                             </td>
                             <td class="py-3">
                                 <p class="my-0">€{{ item.price_line }}</p> 
@@ -100,30 +97,12 @@
                     {% endfor %}
                     <tr>
                         <td colspan="5" class="pt-5 text-right">
-                            <h6><strong>Bag Total: €{{ total|floatformat:2 }}</strong></h6>
-                            <h6>Discount: €{{ discount_applied|floatformat:2 }} </h6>
-                            <h4 class="mt-4"><strong>Grand Total: €{{ grand_total|floatformat:2 }}</strong></h4>
-                            {% if discount_delta > 0 %}
-                                <p class="mb-1 text-danger">
-                                    You could get {{discount_percentage}}% discount by spending <strong>€{{ discount_delta }}</strong> more!
-                                </p>
-                            {% endif %}
+                            {% include "bag/bag-total.html" %} <!-- bag total -->
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="5" class="text-right">
-                            <a href="{% url 'events' %}" class="btn btn-outline-black rounded-0 btn-lg">
-                                <span class="icon">
-                                    <i class="fas fa-chevron-left"></i>
-                                </span>
-                                <span class="text-uppercase">Keep Shopping</span>
-                            </a>
-                            <a href="{% url 'checkout' %}" class="btn btn-black rounded-0 btn-lg">
-                                <span class="text-uppercase">Secure Checkout</span>
-                                <span class="icon">
-                                    <i class="fas fa-lock"></i>
-                                </span>
-                            </a>
+                        <td colspan="5" class="text-right"> <!-- check out buttons -->
+                            {% include "bag/checkout-buttons.html" %}
                         </td>
                     </tr>
                 </table>
@@ -144,8 +123,90 @@
 
 {% block post_loadjs %}
 {{ block.super }}
-{% include 'events/includes/quantity_input_script.html' %}
 
+<script type="text/javascript">
+    // Disable +/- buttons outside 1-49 range
+    function handleEnableDisable(itemId) {
+        console.log('handle disable ' + itemId) 
+        
+       
+                    var currentValue = parseInt($(`.id_qty_${itemId}`).val());
+                    console.log('currentValue')
+                    console.log(currentValue)
+                    var minusDisabled = currentValue < 2;
+                    var plusDisabled = currentValue > 48;
+                    $(`.decrement-qty_${itemId}`).prop('disabled', minusDisabled);
+                    $(`.increment-qty_${itemId}`).prop('disabled', plusDisabled);
+       
+        
+
+        //id_qty_{{ item.event_id }}
+    }
+
+    // Ensure proper enabling/disabling of all inputs on page load
+    //console.log("page load?")
+    var allQtyInputs = $('.qty_input'); // loop over all elements with .qty_input class
+    for(var i = 0; i < allQtyInputs.length; i++){
+        var itemId = $(allQtyInputs[i]).data('item_id');
+        handleEnableDisable(itemId);
+    }
+
+    // Check enable/disable every time the input is changed
+    // note this does not fire on button click  but the handleEnableDisable is called explicitly
+    $('.qty_input').change(function() {
+        //console.log("on change");
+        var itemId = $(this).data('item_id');
+        handleEnableDisable(itemId);
+    });
+    // Increment quantity
+    $('.increment-qty').click(function(e) {
+       e.preventDefault();
+       var closestInput = $(this).closest('.input-group').find('.qty_input')[0]; // fron the button (.increment-qty) go up the tree to find input grup and then find qty_inpput
+       var currentValue = parseInt($(closestInput).val());
+
+       var itemId = $(this).data('item_id');
+       var el = '.qty_' + itemId; 
+
+       $(el).val(currentValue+1);
+       //$(closestInput).val(currentValue + 1);
+       
+       handleEnableDisable(itemId); // disable the button if <2 or >48
+    });
+
+
+    // get all classes of decrement-qty
+      //var x = document.querySelectorAll(".decrement-qty_"{{item.event_id}}");
+
+    // Decrement quantity
+    $('.decrement-qty').click(function(e) {
+       console.log('firing decrement-qty click')
+       e.preventDefault();
+       // get all classes of decrement-qty
+      //var x = document.querySelectorAll(".decrement-qty_"{{item.event_id}}");
+
+       var closestInput = $(this).closest('.input-group').find('.qty_input')[0]; 
+       console.log(closestInput.id)
+       
+       //console.log(closestInput)
+       var currentValue = parseInt($(closestInput).val());
+       
+       $(closestInput).val(currentValue - 1);
+       //console.log(currentValue)
+       //$(`.qty_${itemId}`).val(currentValue - 1)
+       var itemId = $(this).data('item_id');
+       //c//onsole.log(itemId)
+       var el = '.qty_' + itemId; 
+       //console.log(el)
+       //document.getElementsByClassName('qty_61').val= 100;
+       $(el).val(currentValue-1);
+       //$(selector).val(value)
+
+       handleEnableDisable(itemId);
+
+       //id_qty_{{ item.event_id }}
+    });
+
+</script>
 
 <script type="text/javascript">
     // Update quantity
@@ -166,6 +227,12 @@
          .done(function() { //when done reload the page
              location.reload();
          });
+    })
+</script>
+
+<script type="text/javascript">
+    $('.btt-link').click(function(e) {
+        window.scrollTo(0,0)
     })
 </script>
 {% endblock %}

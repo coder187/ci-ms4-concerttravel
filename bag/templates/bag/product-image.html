@@ -1,0 +1,9 @@
+{% if item.eventlist.image %}
+<img class="img-fluid rounded" src="{{ item.eventlist.image.url }}" alt="{{item.eventlist.name}}">
+{% else %}
+{% if item.eventlist.image_url %}
+    <img class="img-fluid rounded" src="{{ item.eventlist.image_url }}" alt="{{item.eventlist.name}}">
+{% else %}
+    <img class="img-fluid rounded" src="{{ MEDIA_URL }}noimage.png" alt="{{item.eventlist.name}}">
+{% endif %}    
+{% endif %}
