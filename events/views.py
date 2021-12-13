@@ -6,46 +6,43 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import ProtectedError
 from django.db.models.functions import Lower
 from django.db.models import Count
-
-
 from .models import EventList, PickLoc, Destination, EventType
-from checkout.models import Order, OrderLineItem 
 from datetime import datetime, timedelta
-
 from .forms import EventListForm, PickLocsForm
+
 
 # Create your views here.
 def all_events(request):
     ''' a view to show all events, inc sorting and search query'''
 
+    #  build a list of total tickes sold per event
+    #  get all events with an event date bewtween today and today+days_to_show
+    #  and where publish = true
 
-    # build a list of total tickes sold per event
-
-    # get all events with an event date bewtween today and today+days_to_show
-    # and where publish = true
-
-    
     if hasattr(settings, 'DAYS_TO_SHOW'):
         days_to_show = int(settings.DAYS_TO_SHOW)
     else:
         days_to_show = 365
-    
+
     from_date = datetime.today().date()
     to_date = from_date + timedelta(days=days_to_show)
-    
+
     if request.user.is_superuser:
-         events = EventList.objects.filter(
+        events = EventList.objects.filter(
             event_date__range=[from_date, to_date]).order_by(
                 'event_date')
-    else:   
+    else:
         events = EventList.objects.filter(
             event_date__range=[from_date, to_date],
-                publish = True).order_by(
+            publish=True).order_by(
                 'event_date')
 
-    
-    # query for total tickets per event
-    ticket_totals_per_event = EventList.objects.filter(publish=True).annotate(number_of_tickets=Count('eventrecord'))
+    #  query for total tickets per event
+    ticket_totals_per_event = EventList.objects.filter(
+        publish=True
+        ).annotate(
+            number_of_tickets=Count('eventrecord')
+            )
 
     t_sum = 0
     t_count = 0
@@ -53,10 +50,10 @@ def all_events(request):
     if ticket_totals_per_event.count() > 0:
         for t in ticket_totals_per_event:
             t_sum = t_sum + t.number_of_tickets
-            t_count +=1
-    
+            t_count += 1
+
     average_tickets = t_sum/t_count
-        
+
     query = None
     locations = None
     types = None
@@ -77,60 +74,69 @@ def all_events(request):
                     sortkey = f'-{sortkey}'
             events = events.order_by(sortkey)
 
-
-        
         if 'location' in request.GET:
             locations = request.GET['location'].split(',')
             if request.user.is_superuser:
-                events = EventList.objects.filter(event_dest__destination__in=locations, \
-                    event_date__range=[from_date, to_date]).order_by('event_date')
+                events = EventList.objects.filter(
+                            event_dest__destination__in=locations,
+                            event_date__range=[
+                                    from_date, to_date
+                                    ]).order_by('event_date')
             else:
-                events = EventList.objects.filter(event_dest__destination__in=locations, \
-                    event_date__range=[from_date, to_date], \
-                    publish=True).order_by('event_date')
-                
+                events = EventList.objects.filter(
+                        event_dest__destination__in=locations,
+                        event_date__range=[from_date, to_date],
+                        publish=True).order_by('event_date')
+
             locations = Destination.objects.filter(destination__in=locations)
 
         if 'event_type' in request.GET:
             types = request.GET['event_type'].split(',')
             if request.user.is_superuser:
-                events = EventList.objects.filter(event_type__event_type__in=types, \
-                    event_date__range=[from_date, to_date]).order_by('event_date')
+                events = EventList.objects.filter(
+                            event_type__event_type__in=types,
+                            event_date__range=[
+                                from_date, to_date
+                                ]).order_by('event_date')
             else:
-                events = EventList.objects.filter(event_type__event_type__in=types, \
-                    event_date__range=[from_date, to_date], \
-                    publish=True).order_by('event_date')
-                
+                events = EventList.objects.filter(
+                        event_type__event_type__in=types,
+                        event_date__range=[from_date, to_date],
+                        publish=True).order_by('event_date')
+
             types = EventType.objects.filter(event_type__in=types)
-        
 
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
-                messages.error(request, "You didn't enter any search criteria!")
+                messages.error(request, "You didn't enter any \
+                                        search criteria!")
                 return redirect(reverse('events'))
-            
-            queries = Q(name__icontains=query) \
-                    | Q(description__icontains=query) \
-                    | Q(event_dest__friendly_name__icontains=query) \
-                    | Q(event_type__friendly_name__icontains=query)
 
-            events = EventList.objects.filter(queries, \
-                event_date__range=[from_date, to_date], \
-                    publish=True).order_by('event_date')
+            queries = Q(name__icontains=query) \
+                | Q(description__icontains=query) \
+                | Q(event_dest__friendly_name__icontains=query) \
+                | Q(event_type__friendly_name__icontains=query)
+
+            events = EventList.objects.filter(queries,
+                                              event_date__range=[
+                                                  from_date, to_date
+                                                  ],
+                                              publish=True).order_by(
+                                                    'event_date')
 
     context = {
-        'events':events,
+        'events': events,
         'search_term': query,
         'current_locations': locations,
-        'current_types':types,
-        'ticket_totals_per_event':ticket_totals_per_event,
-        'average_tickets':average_tickets
+        'current_types': types,
+        'ticket_totals_per_event': ticket_totals_per_event,
+        'average_tickets': average_tickets
 
     }
 
     return render(request, 'events/events.html', context)
-    
+
 
 def event_detail(request, event_id):
     ''' a view to show individual event'''
@@ -139,11 +145,11 @@ def event_detail(request, event_id):
     picklocs = PickLoc.objects.all().order_by('sort')
     context = {
             'event': event,
-            'picklocs':picklocs
+            'picklocs': picklocs
         }
 
     return render(request, 'events/event_detail.html', context)
-    
+
 
 @login_required
 def add_event(request):
@@ -159,10 +165,11 @@ def add_event(request):
             messages.success(request, 'Successfully added event!')
             return redirect(reverse('event_detail', args=[event.id]))
         else:
-            messages.error(request, 'Failed to add event. Please ensure the form is valid.')
+            messages.error(request, 'Failed to add event. Please ensure the \
+                                    form is valid.')
     else:
         form = EventListForm()
-    
+
     template = 'events/add_event.html'
     context = {
         'form': form,
@@ -186,7 +193,8 @@ def edit_event(request, event_id):
             messages.success(request, 'Successfully updated event!')
             return redirect(reverse('event_detail', args=[event.id]))
         else:
-            messages.error(request, 'Failed to update event. Please ensure the form is valid.')
+            messages.error(request, 'Failed to update event. Please ensure the \
+                                    form is valid.')
     else:
         form = EventListForm(instance=event)
         messages.info(request, f'You are editing {event.name}')
@@ -206,7 +214,7 @@ def delete_event(request, event_id):
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('home'))
-    
+
     event = get_object_or_404(EventList, pk=event_id)
     try:
         event.delete()
@@ -216,9 +224,9 @@ def delete_event(request, event_id):
             messages.error(request, 'Event cannot be deleted as Orders exist!')
         else:
             messages.error(request, 'Failed to delete Event!')
-    
-    
+
     return redirect(reverse('events'))
+
 
 @login_required
 def add_pick(request):
@@ -234,7 +242,8 @@ def add_pick(request):
             messages.success(request, 'Successfully added pick location!')
             return redirect(reverse('events'))
         else:
-            messages.error(request, 'Failed to add pick location. Please ensure the form is valid.')
+            messages.error(request, 'Failed to add pick location. Please ensure \
+                                        the form is valid.')
     else:
         form = PickLocsForm()
         picklocs = PickLoc.objects.all()
@@ -242,13 +251,14 @@ def add_pick(request):
     template = 'events/add_pick.html'
     context = {
         'form': form,
-        'picklocs':picklocs,
+        'picklocs': picklocs,
     }
 
     return render(request, template, context)
 
+
 @login_required
-def edit_pick(request,pick_id):
+def edit_pick(request, pick_id):
     """ Edit a pick up location in the store """
     # print ('edit pick started')
 
@@ -256,8 +266,7 @@ def edit_pick(request,pick_id):
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('home'))
 
-
-    pickloc = get_object_or_404(PickLoc,pk=pick_id)
+    pickloc = get_object_or_404(PickLoc, pk=pick_id)
 
     if request.method == 'POST':
         form = PickLocsForm(request.POST, instance=pickloc)
@@ -266,17 +275,19 @@ def edit_pick(request,pick_id):
             messages.success(request, 'Successfully updated pick location!')
             return redirect(reverse('events'))
         else:
-            messages.error(request, 'Failed to update pick location. Please ensure the form is valid.')
+            messages.error(request, 'Failed to update pick location. \
+                                    Please ensure the form is valid.')
     else:
         form = PickLocsForm(instance=pickloc)
         messages.info(request, f'You are editing {pickloc.location}')
-    
+
     template = 'events/edit_pick.html'
     context = {
             'form': form,
             'pickloc': pickloc,
         }
-    return render(request, template, context )
+    return render(request, template, context)
+
 
 @login_required
 def delete_pick(request, pick_id):
@@ -284,13 +295,12 @@ def delete_pick(request, pick_id):
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('home'))
-    
-    pickloc = get_object_or_404(PickLoc,pk=pick_id)
+
+    pickloc = get_object_or_404(PickLoc, pk=pick_id)
     try:
         pickloc.delete()
         messages.success(request, 'Pick Location deleted!')
-    except Exception as e:
+    except Exception:
         messages.error(request, 'Failed to delete Event!')
-    
-    
+
     return redirect(reverse('events'))

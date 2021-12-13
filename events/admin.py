@@ -3,7 +3,6 @@ from django.contrib import admin
 from .models import EventList, EventType, PickLoc, Destination
 
 
-
 class EventListAdmin(admin.ModelAdmin):
     list_display = (
         'id',
@@ -18,6 +17,7 @@ class EventListAdmin(admin.ModelAdmin):
 
     ordering = ('event_date', 'name')
 
+
 class PickLocsAdmin(admin.ModelAdmin):
     list_display = (
         'id',
@@ -27,8 +27,9 @@ class PickLocsAdmin(admin.ModelAdmin):
         'fare'
     )
 
-# Register your models here.
+
+#  Register your models here.
 admin.site.register(EventList, EventListAdmin)
 admin.site.register(EventType)
-admin.site.register(PickLoc,PickLocsAdmin)
+admin.site.register(PickLoc, PickLocsAdmin)
 admin.site.register(Destination)

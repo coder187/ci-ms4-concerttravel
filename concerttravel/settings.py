@@ -22,14 +22,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = 'django-insecure-zt%3u5fhmf54b_@uy04a-d1di2)#hw!m&(3&1si-5i4m#dhi#y'
 
 SECRET_KEY = os.environ.get('SECRET_KEY', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['ci-ms4-concerttravel.herokuapp.com','localhost']
+ALLOWED_HOSTS = ['ci-ms4-concerttravel.herokuapp.com', 'localhost']
 
 
 # Application definition
@@ -77,7 +76,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             os.path.join(BASE_DIR, 'templates'),
-            os.path.join(BASE_DIR,'templates','allauth'),
+            os.path.join(BASE_DIR, 'templates', 'allauth'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -86,10 +85,11 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'django.template.context_processors.media', 
+                'django.template.context_processors.media',
                 'bag.context.bag_contents',
             ],
-             # instead of importing crispy forms to eacj page - add it here and it si avail to all pages
+            # instead of importing crispy forms to eacj page -
+            # add it here and it si avail to all pages
             'builtins':[
                 'crispy_forms.templatetags.crispy_forms_tags',
                 'crispy_forms.templatetags.crispy_forms_field',
@@ -110,7 +110,6 @@ AUTHENTICATION_BACKENDS = [
 
 SITE_ID = 1
 
-  
 ACCOUNT_AUTHTENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
@@ -125,17 +124,15 @@ WSGI_APPLICATION = 'concerttravel.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-
-
 if 'DATABASE_URL' in os.environ:
-	DATABASES= {
-		'default':dj_database_url.parse(os.environ.get('DATABASE_URL'))
-		}
+    DATABASES = {
+            'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+        }
 else:
     DATABASES = {
         'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
 
@@ -144,7 +141,7 @@ else:
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME': 'django.contrib.auth.password_validation. UserAttributeSimilarityValidator',
     },
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
@@ -222,7 +219,7 @@ STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')
 
 DAYS_TO_SHOW = 730
 
-# this will output to console confirmation email sent by allauth. 
+# this will output to console confirmation email sent by allauth.
 # Disalbe on heroku
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # DEFAULT_FROM_EMAIL = 'CONCERTTRAVEL@example.com'

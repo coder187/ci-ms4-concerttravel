@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class PickLoc(models.Model):
     ''' list of pick up locations or bus stops '''
     location = models.CharField(max_length=254)
@@ -9,6 +10,7 @@ class PickLoc(models.Model):
 
     def __str__(self):
         return self.location
+
 
 class EventType(models.Model):
     ''' concert/festival/sporting etc.. '''
@@ -21,6 +23,7 @@ class EventType(models.Model):
     def get_friendly_name(self):
         return self.friendly_name
 
+
 class Destination(models.Model):
     ''' list of venues '''
     destination = models.CharField(max_length=254)
@@ -31,6 +34,7 @@ class Destination(models.Model):
 
     def get_friendly_name(self):
         return self.friendly_name
+
 
 class EventList(models.Model):
     event_type = models.ForeignKey('EventType', on_delete=models.PROTECT)
