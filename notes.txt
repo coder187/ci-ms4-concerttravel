@@ -19,9 +19,13 @@ email text and possiblt attach ticket.
 discount when ticket purch >10 [done]
 date format on date picker 
 add name to profile page. 
-add if cond to events to show events where publish = false for superuser.
+add if cond to events to show events where publish = false for superuser. [done]
 SWITCH DEBUG TO FALSE
 save fname and sname on register - todo extend allauth SignupForm to inc fname and lastname.
+css layout fixes [done]
+add footer homepage.
+pep8 check
+
 
 edit picklocs
 <script>
