@@ -93,15 +93,15 @@
 
                             <!--card body -->
                             <div class="card-body pb-0">
-                                <p class="mb-0">{{ event.name }} {{ event.event_dest }} </p>
-                                <p class="mb-0">{{ event.description }}</p>
+                                <p class="mb-0 lead">{{ event.name }} </p>
+                                <p class="mb-0">{{ event.event_date }}</p>
                             </div>
 
                             <!--card footer -->
                             <div class="card-footer bg-white pt-0 border-0 text-left">
                                 <div class="row">
                                     <div class="col">
-                                        <p class="lead mb-0 text-left font-weight-bold">{{ event.event_date }}</p>
+                                        <p class="mb-0 text-left font-weight-bold">{{ event.event_dest }}</p>
                                         {% if request.user.is_superuser %}
                                             <small class="ml-3">
                                                 <a href="{% url 'edit_event' event.id %}">Edit</a> | 
