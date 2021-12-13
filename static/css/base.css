@@ -297,9 +297,8 @@ input[name='q']::placeholder {
 /*---------------footer--- */
 
 #footer{
-    background-color: royalblue;
-    color:#fafafa;
-    min-height:200px;
+    color:#fafafa
+    min-height: 200px;
     background: url('/media/sound.png') no-repeat center center;
     /*background-size: cover; */
     

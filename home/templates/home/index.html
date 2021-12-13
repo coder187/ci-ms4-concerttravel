@@ -86,40 +86,15 @@
                                             </div>
 
                                             <div class="col-sm-4">
-                                                <form id="contact-form" role="form">
-                                                    <div class="controls">
-                                                        <div class="row">
-                                                            <div class="col-md-12">
-                                                                <div class="form-group"> 
-                                                                    <input id="form_name" type="text" name="name" class="form-control" 
-                                                                        placeholder="Name *" required="required" data-error="Name is required."> 
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-md-12">
-                                                                <div class="form-group"> 
-                                                                    <input id="form_email" type="email" name="email" class="form-control" 
-                                                                    placeholder="email*" required="required" data-error="Valid email is required."> 
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-md-12">
-                                                                <div class="form-group">
-                                                                    <textarea id="form_message" name="message" class="form-control" 
-                                                                        placeholder="message" rows="2" required="required" data-error="Please, leave us a message.">
-                                                                    </textarea> 
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-md-12"> 
-                                                                <input type="submit" class="btn btn-success btn-send pt-2 btn-block " value="Send Message"> 
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </form>
+                                                <h5 class="uppercase general-sub">Contact Us</h5>
+                                                
+                                                    <form class="mt-3" action="" method="POST" id="contact-form">
+                                                        {% csrf_token %}
+                                                        {{ form|crispy }}
+                                                        <button class="btn btn-primary">Send Message</button>
+                                                    </form>
+                                                 
+                                                
                                             </div>
                                         </div>  
                                         <div class = "row">
@@ -162,7 +137,7 @@
             </div> <!-- end row-->
         </div> <!-- end footer container-->
     </div> <!-- end container -->
-    
+
 {% endblock %}
 
 
