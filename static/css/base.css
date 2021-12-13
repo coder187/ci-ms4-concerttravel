@@ -294,8 +294,56 @@ input[name='q']::placeholder {
     font-size: 30px;
     letter-spacing: .2rem;
 }
+/*---------------footer--- */
+
+#footer{
+    background-color: royalblue;
+    color:#fafafa;
+    min-height:200px;
+    background: url('/media/sound.png') no-repeat center center;
+    /*background-size: cover; */
+    
+}
 
 
+.social-links{
+    padding-bottom: 15px;
+    font-size:40px;
+}
+
+.social-links li a i {
+    width: 32px;
+    height:32px;
+    padding: 12px 0;
+    border-radius: 50%;
+    font-size: 13px;
+    line-height: 7px;
+    text-align: center;
+    color:#fafafa;
+    background: #8f8f8f;
+    transition: all .5s ease-in-out; /*note transitions are in parent element. Tranisition will take effect when mouse hovers and stops when mouse leaves*/
+    -moz-transition: all .5s ease-in-out;   /*work around for browsers mozilla*/
+    -webkit-transition: all .5s ease-in-out;/*work around for browsers safari apple*/
+    -o-transition: all .5s ease-in-out;     /*work around for browsers opera*/
+}
+.social-links li a i:hover{ /*note no whitespace on pseudo element */
+    background-color: #185F42;
+}
+
+#footer-details{
+    padding:20px;
+    text-align: center;
+}   
+
+footer ul li{
+    list-style-type: none;
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margins */
+}
+
+footer ul{
+    padding:5px;
+}
 
 /* -------------------------------- Media Queries */
 
