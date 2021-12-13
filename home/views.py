@@ -12,8 +12,9 @@ def index(request):
             cd = form.cleaned_data
 
             subject = 'message from concert travel.com'
+            name = cd.get('from_email')
             from_form_email = cd.get('from_email')
-            body = cd.get('message') + '\n' + from_form_email 
+            body = cd.get('message') + '\n' + 'From:' + name + '\n' + 'Email:' + from_form_email 
             cust_email = 'kellyjona@gmail.com'
             form = ContactForm()  #   clear the form
             print('start email')
