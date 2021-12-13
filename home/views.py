@@ -15,7 +15,7 @@ def index(request):
             from_form_email = cd.get('from_email')
             body = cd.get('message') + '\n' + from_form_email 
             cust_email = 'kellyjona@gmail.com'
-    
+            form = ContactForm()  #   clear the form
             print('start email')
             try:
                 send_mail(

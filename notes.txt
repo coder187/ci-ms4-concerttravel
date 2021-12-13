@@ -23,8 +23,9 @@ add if cond to events to show events where publish = false for superuser. [done]
 SWITCH DEBUG TO FALSE
 save fname and sname on register - todo extend allauth SignupForm to inc fname and lastname.
 css layout fixes [done]
-add footer homepage.
-pep8 check
+add footer homepage. [done]
+add contact form [done]
+pep8 check [working through]
 
 
 edit picklocs
