@@ -12,8 +12,10 @@ def index(request):
             cd = form.cleaned_data
 
             subject = 'message from concert travel.com'
-            body = cd.get('message')
-            cust_email = cd.get('from_email')
+            from_form_email = cd.get('from_email')
+            body = cd.get('message') + '\n' + from_form_email 
+            cust_email = 'kellyjona@gmail.com'
+    
             print('start email')
             try:
                 send_mail(
@@ -22,7 +24,17 @@ def index(request):
                 settings.DEFAULT_FROM_EMAIL,
                 [cust_email]
                 )
-                print('email semt')
+                print('email 1semt')
+                # copy the sender
+                subject = 'Copy of Message from Contact Us Page @ ConcertTravel.com'
+                cust_email = from_form_email
+                send_mail(
+                subject,
+                body,
+                settings.DEFAULT_FROM_EMAIL,
+                [cust_email]
+                )
+                print('email 2semt')
             except Exception as e:
                 print('error')   
                 print(e)
