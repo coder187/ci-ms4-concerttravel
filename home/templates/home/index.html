@@ -64,53 +64,101 @@
 
         <div class = "container-fluid">
             <div class="row" id="footer">
-                
-                <div class="col">
-                    <!-- Footer Links -->
-                    <div id="footer-details" class = "row" >
-                        <div class="col-sm-4"> 
-                            <h5 class="uppercase general-sub">Address</h5>
-                            <p class ="Inline-Block">Unit 6C,<br>Eastway Business Park,<br>Limerick<br>EIR 0417</p>
-                        </div>
-                        <div class="col-sm-4">
-                            <h5 class="uppercase general-sub">Contact</h5>
-                            <ul>
-                                <li><i class="fa fa-mobile"></i> Emergency (24/7 Contact) : <strong>555 3445678</strong></li>
-                                <li><i class="fa fa-phone"></i> Office (Business Hours) : <strong>555 403298</strong></li>
-                                <li><i class="fa fa-mobile"></i> Sales : <strong>555 873445678</strong></li>
-                            </ul>
-                        </div>
-                        <div class="col-sm-4">
-                            <h5 class="uppercase general-sub">Social</h5>
-                            <ul class="list-inline social-links">
-                                <li class="list-inline-item">
-                                    <a href="https://www.facebook.com/" target = "_blank">
-                                        <i class="fab fa-facebook-f" aria-hidden="true"></i>
-                                            <span class="sr-only">Facebook</span>
-                                    </a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a href="https://www.twitter.com/" target = "_blank">
-                                        <i class="fab fa-twitter" aria-hidden="true"></i>
-                                            <span class="sr-only">Twitter</span>
-                                    </a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a href="https://www.instagram.com/" target = "_blank">
-                                        <i class="fab fa-instagram" aria-hidden="true"></i>
-                                            <span class="sr-only">Instagram</span>
-                                    </a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a href="https://www.tumblr.com/" target = "_blank">
-                                        <i class="fab fa-tumblr" aria-hidden="true"></i>
-                                            <span class="sr-only">Tumblr</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>  
-                    </div><!-- end footer details--> 
-                </div> <!-- end col-->
+                    <div class="col">
+                        <!-- Footer Links -->
+                        <div id="footer-details" class = "row" >
+                            <div class="col">
+                                <div class ="row">
+                                    <div class="col">
+                                        <div class = "row">
+                                            <div class="col-sm-4"> 
+                                                <h5 class="uppercase general-sub">Address</h5>
+                                                <p class ="Inline-Block">Unit 6C,<br>Eastway Business Park,<br>Limerick<br>EIR 0417</p>
+                                            </div>
+                                        
+                                            <div class="col-sm-4">
+                                                <h5 class="uppercase general-sub">Contact</h5>
+                                                <ul>
+                                                    <li><i class="fa fa-mobile"></i> Emergency (24/7 Contact) : <strong>555 3445678</strong></li>
+                                                    <li><i class="fa fa-phone"></i> Office (Business Hours) : <strong>555 403298</strong></li>
+                                                    <li><i class="fa fa-mobile"></i> Sales : <strong>555 873445678</strong></li>
+                                                </ul>
+                                            </div>
+
+                                            <div class="col-sm-4">
+                                                <form id="contact-form" role="form">
+                                                    <div class="controls">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div class="form-group"> 
+                                                                    <input id="form_name" type="text" name="name" class="form-control" 
+                                                                        placeholder="Name *" required="required" data-error="Name is required."> 
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div class="form-group"> 
+                                                                    <input id="form_email" type="email" name="email" class="form-control" 
+                                                                    placeholder="email*" required="required" data-error="Valid email is required."> 
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div class="form-group">
+                                                                    <textarea id="form_message" name="message" class="form-control" 
+                                                                        placeholder="message" rows="2" required="required" data-error="Please, leave us a message.">
+                                                                    </textarea> 
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-12"> 
+                                                                <input type="submit" class="btn btn-success btn-send pt-2 btn-block " value="Send Message"> 
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>  
+                                        <div class = "row">
+                                            <div class = "col">
+                                                <p><h5 class="uppercase general-sub">Social</h5></p>
+                                                <ul class="list-inline social-links">
+                                                    <li class="list-inline-item">
+                                                        <a href="https://www.facebook.com/" target = "_blank">
+                                                            <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                                                                <span class="sr-only">Facebook</span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="list-inline-item">
+                                                        <a href="https://www.twitter.com/" target = "_blank">
+                                                            <i class="fab fa-twitter" aria-hidden="true"></i>
+                                                                <span class="sr-only">Twitter</span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="list-inline-item">
+                                                        <a href="https://www.instagram.com/" target = "_blank">
+                                                            <i class="fab fa-instagram" aria-hidden="true"></i>
+                                                                <span class="sr-only">Instagram</span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="list-inline-item">
+                                                        <a href="https://www.tumblr.com/" target = "_blank">
+                                                            <i class="fab fa-tumblr" aria-hidden="true"></i>
+                                                                <span class="sr-only">Tumblr</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                      
+                        </div><!-- end footer details--> 
+                    </div> <!-- end col-->
+                </div>
             </div> <!-- end row-->
         </div> <!-- end footer container-->
     </div> <!-- end container -->
