@@ -1,0 +1,31 @@
+{% extends 'base.html'%}
+
+{% load static %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+<div class="overlay"></div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col text-center mt-3">
+            <h3 >400 Error! Bad Request.</h3>
+             <img src="{{ MEDIA_URL }}400.png" alt="400 Error Image">
+        </div>
+    </div>
+    <div class="row">
+        <div class ="col text-center mt-3">
+            <h4>Something has gone wrong in the mix.</h3>
+            <a href="{% url 'home' %}" class="light-blue-text text-darken-4"> 
+            Click To Return To The Home Page
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

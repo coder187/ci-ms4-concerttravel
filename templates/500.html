@@ -1,0 +1,16 @@
+{% extends "base.html"%}
+{% block content%}
+<div class="row center-align">
+    <h3>Internal Server Error!</h3>
+
+    <img src="{{ MEDIA_URL }}500.png" alt="500 Error Image">
+</div>
+<div class="row center-align">
+    <h4>Its not you, its us.</h3>
+    <h4>The server may be busy, please come back later and try again.</h3>
+    
+    <a href="{% url 'home' %}" class="light-blue-text text-darken-4"> 
+        Click To Return To The Home Page
+    </a>
+</div>
+{% endblock %}
