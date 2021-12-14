@@ -12,30 +12,31 @@ Project - Full Stack Frameworks With Django - Code Institute
 ## User Experience (UX)
 ### Scope
 #### User stories
-| 1  | Site User  | Easily view prices for travel to concerts and events                               | Make an informed decision on whether to purchase or not                         |
-|----|------------|------------------------------------------------------------------------------------|---------------------------------------------------------------------------------|
-| 2  | Site User  | Qucikly retrieve contact information for the buisness operator                     | Verify the business  details                                                    |
-| 3  | Site User  | Easily send a message to the buisness via the site                                 | Easily make contact or request more inforation                                  |
-| 4  | Site User  | Easily view which events are more popular                                          | Purchase tickets before they are still in stock.                                |
-| 5  | Shopper    | Easily view the total in my shopping bag at any given time                         | Avoid over spendinf                                                             |
-| 6  | Site User  | Easily create an account                                                           | Be able to view my purchase history and store my billing details for next visit |
-| 7  | Site User  | Easily login or out                                                                | I can view and edit my personal information                                     |
-| 8  | Site User  | Easily reset my password                                                           | I can recover my account                                                        |
-| 9  | Site User  | Receive email cofirmation after registering                                        | Verify successful account registration                                          |
-| 10 | Site User  | Have a personalises user profile                                                   | View my order history, personal informaton and save  my payment information     |
-| 11 | Shopper    | Sort list of events by Date, Venue and Artist name                                 | Easily find the events I am most interested in                                  |
-| 12 | Shopper    | View multiple Venues for the given City                                            | I can view events in that location                                              |
-| 13 | Shopper    | Search for an Event by Artist name or Event description                            | Find a specific event                                                           |
-| 14 | Shopper    | Easily see what I have searched for and total results                              | Quickly decide whether the Event is available.                                  |
-| 15 | Shopper    | Easily select the number of seats for a given Event when purchasing                | Ensure I don’t select the incorrect Event or quantity                           |
-| 16 | Shopper    | View contents of my shopping bag                                                   | See the total cost of my order and all items selected                           |
-| 17 | Shopper    | Adjust the quantity of individual items in my bag                                  | Easily make changes to my purchase before checkout                              |
-| 18 | Shopper    | Easily enter my payment informaion                                                 | Easy, quick and hassle free checkout                                            |
-| 19 | Shopper    | Feel my personal information is safe and secure                                    | Confidently provide the needed information to make a checkout                   |
-| 20 | Admin User | Easily add and edit Events                                                         | Update the app with new information                                             |
-| 21 | Admin User | Easily update an Event so that it is no longer accessiable to shoppers to purchase | Prevent over selling available seats.                                           |
-| 22 | Admin User | Easily edit Pick Up Locations                                                      | Add new locations as required                                                   |
-| 23 | Admin User | Easily update the price per seat                                                   | Control fares charged                                                           |
+| User Story | As A       | I wan to be able to                                                                | So that I can                                                                   |
+|------------|------------|------------------------------------------------------------------------------------|---------------------------------------------------------------------------------|
+| 1          | Site User  | Easily view prices for travel to concerts and events                               | Make an informed decision on whether to purchase or not                         |
+| 2          | Site User  | Qucikly retrieve contact information for the buisness operator                     | Verify the business  details                                                    |
+| 3          | Site User  | Easily send a message to the buisness via the site                                 | Easily make contact or request more inforation                                  |
+| 4          | Site User  | Easily view which events are more popular                                          | Purchase tickets before they are still in stock.                                |
+| 5          | Shopper    | Easily view the total in my shopping bag at any given time                         | Avoid over spendinf                                                             |
+| 6          | Site User  | Easily create an account                                                           | Be able to view my purchase history and store my billing details for next visit |
+| 7          | Site User  | Easily login or out                                                                | I can view and edit my personal information                                     |
+| 8          | Site User  | Easily reset my password                                                           | I can recover my account                                                        |
+| 9          | Site User  | Receive email cofirmation after registering                                        | Verify successful account registration                                          |
+| 10         | Site User  | Have a personalises user profile                                                   | View my order history, personal informaton and save  my payment information     |
+| 11         | Shopper    | Sort list of events by Date, Venue and Artist name                                 | Easily find the events I am most interested in                                  |
+| 12         | Shopper    | View multiple Venues for the given City                                            | I can view events in that location                                              |
+| 13         | Shopper    | Search for an Event by Artist name or Event description                            | Find a specific event                                                           |
+| 14         | Shopper    | Easily see what I have searched for and total results                              | Quickly decide whether the Event is available.                                  |
+| 15         | Shopper    | Easily select the number of seats for a given Event when purchasing                | Ensure I don’t select the incorrect Event or quantity                           |
+| 16         | Shopper    | View contents of my shopping bag                                                   | See the total cost of my order and all items selected                           |
+| 17         | Shopper    | Adjust the quantity of individual items in my bag                                  | Easily make changes to my purchase before checkout                              |
+| 18         | Shopper    | Easily enter my payment informaion                                                 | Easy, quick and hassle free checkout                                            |
+| 19         | Shopper    | Feel my personal information is safe and secure                                    | Confidently provide the needed information to make a checkout                   |
+| 20         | Admin User | Easily add and edit Events                                                         | Update the app with new information                                             |
+| 21         | Admin User | Easily update an Event so that it is no longer accessiable to shoppers to purchase | Prevent over selling available seats.                                           |
+| 22         | Admin User | Easily edit Pick Up Locations                                                      | Add new locations as required                                                   |
+| 23         | Admin User | Easily update the price per seat                                                   | Control fares charged                                                           |
 
 ## Structure
 ### Technical Capabilities
@@ -65,31 +66,109 @@ HTML5, CCS3, Javascript, Python, Django, SQLITE, Postgres along with Bootstrap f
   * Mapping tools to help users navigate the various venues.
   * More social share options to allow users share events with family and friends
   * Group Travel option to allow a user organise a private group for travel by allowing non admin users create their own events.
+  * Allow users add passenger information to each ticket.
   
   
 ### Data Model
-![Initial Data Model](https://raw.githubusercontent.com/coder187/ci-ms4-concerttravel/main/support/db_relationships.png)
+Initial Data Model Prototype
+![Initial Data Model Prototype](https://raw.githubusercontent.com/coder187/ci-ms4-concerttravel/main/support/db_relationships.png)
 
-**users**  
-List of registered users.  
-Passwords are hashed.  
-The username field is stored in the added_by field of the recipe collection.
+Final Database Schema.
+![Initial Data Model Prototype](https://raw.githubusercontent.com/coder187/ci-ms4-concerttravel/main/support/db_relationships.png)
 
-| id      | username | email | password |
-| ----------- | ---------------- | -------| -----|
-| objectid | string | string |string|
+**Events**  
+List of concerts, sporting, shopping trips and day trips.  
 
-**allergens**
-List of allergens.  
-The allergen text is stored in the recipe collection.
-| id      | allergen | 
-| ----------- | ---------------- | 
-| objectid | string | 
+| Table           | Events    |                                        |
+|-----------------|-----------|----------------------------------------|
+| Field           | Type      | Desc                                   |
+|     event_type  | int       | Sporting / Concert / Festival          |
+|     event_dest  | int       | Venue                                  |
+|     name        | char      | Artist or Group name                   |
+|     description | char      | Desc of service                        |
+|     event_date  | date      | Date of event                          |
+|     publish     | bool      | Allow users to view                    |
+|     long_desc   | long text | Description of the Artist and or Event |
+|     image_url   | char      | path to image                          |
+|     image       | image     | uploaded image                         |
 
-**recipes**
-| id     | name |descr | added_by | added | allergens | difficulty | serves | image_url | ingredients| method|prep time|cook time|ratings|pinned|
-| ---- | ---- | -------- | -------- | -------- | -------- | -------- | -------- |-------- |-------- |-------- | -------- |-------- | ------|------|
-| objectid | string | string | string | string | array(String) |array(String)| string  |array(string) |array(string)|array(string)|string |string| array(String)| array(String)
+**Event Type**
+List of Event Types.
+| Table           | Event Type |               |
+|-----------------|------------|---------------|
+| Field           | Type       | Desc          |
+| event_type  | char       | Type of Event |
+| friendly_name   | char       | Friendly Name | 
+
+**Destination**
+List of Venues
+| Table           | Destination |               |
+|-----------------|------------|---------------|
+| Field           | Type       | Desc          |
+|     destination  | char       |Venue |
+| friendly_name   | char       | Friendly Name |
+
+**PickLoc**
+List of Pick up locations and price per location
+| Table     | PickLoc |                  |
+|-----------|---------|------------------|
+| Field     | Type    | Desc             |
+| Location  | char    | Pick Up Location |
+| pick_time | char    | Time             |
+| sort      | int     | Sort Order       |
+| fare      | double  | Price            |
+
+**Order**
+Processed Orders.
+| Table             | Order  |                                 |
+|-------------------|--------|---------------------------------|
+| Field             | Type   | Desc                            |
+| order_number      | char   | autogenerated guid              |
+| full_name         | char   | shopper name                    |
+| email             | char   | shopper email                   |
+| phone_number      | char   |                                 |
+| country           | char   |                                 |
+| postcode          | char   |                                 |
+| town_or_city      | char   |                                 |
+| street_address1   | char   |                                 |
+|  street_address2  | char   |                                 |
+| county            | char   |                                 |
+| date              | date   | order date                      |
+| order_total       | double |                                 |
+| original_bag      | char   | bag contents at time of sale    |
+| stripe_pid        | char   | strip unique id for transaction |
+| user_profile      | int    | foreign key to Profile          |
+| discount          | double |                                 |
+| grand total       | double | Order Total                     |
+
+**OrderLineItem**
+Order details including ticket no, event and pickup location.
+| Table        | OrderLineitem   |                          |
+|--------------|-----------------|--------------------------|
+| Field        | Type            | Desc                     |
+| ticket_no    | int primay key  | ticket no. autogenerated |
+| order        | int             | foreign key to Order     |
+| event        | int             | foreign key to Event     |
+| pickloc      | int             | foreign key to Pickloc   |
+| price        | double          | price per ticker         |
+| pax_fullname | char            | ticket info              |
+| pax_email    | char            | ticket info              |
+| pax_tel      | char            | ticket info              |
+
+**Profile**
+Extended User information store for created user accounts.
+| Table                                       | OrderLineitem                |                           |
+|---------------------------------------------|------------------------------|---------------------------|
+| Field                                       | Type                         | Desc                      |
+| user                                        | one to one with account User |                           |
+| default_phone_number                        |                              | Profile Data For App User |
+| default_street_address1                     |                              |                           |
+| efault_street_address2                      |                              |                           |
+| default_town_or_city                        |                              |                           |
+| default_count                               |                              |                           |
+| default_postcode                            |                              |                           |
+| default_countr                              |                              |                           |
+
 
 ## Skeleton
 
