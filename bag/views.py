@@ -42,7 +42,6 @@ def add_to_bag(request, event_id):
 def adjust_bag(request, combination_key):
     '''Adjust the ticket qty for the given event to the specified quantity '''
 
-    print('adjust bag firing')
     event_id = combination_key.split(":")[0]
     event = get_object_or_404(EventList, pk=event_id)
     formatted_eventdate = event.event_date.strftime("%b/%d")

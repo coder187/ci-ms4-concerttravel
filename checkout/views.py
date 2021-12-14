@@ -23,7 +23,6 @@ import datetime
 @require_POST
 def cache_checkout_data(request):
     try:
-        print('cache checkout started')
         # get the payment intent identifier for the intent in this request
         pid = request.POST.get('client_secret').split('_secret')[0]
         stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -34,11 +33,8 @@ def cache_checkout_data(request):
             'username': request.user,
         })
         # intent modified so rtn 200 ok
-        print('cache checkout completed')
         return HttpResponse(status=200)
     except Exception as e:
-        print('cache checkout error')
-        print(e.message)
         messages.error(request, ('Sorry, your payment cannot be '
                                  'processed right now. Please try '
                                  'again later.'))
@@ -52,9 +48,6 @@ def checkout(request):
     bag = request.session.get('bag', {})
 
     if request.method == 'POST':
-        # print('POST VALIDATNG FORM')
-        # print(datetime.datetime.now())
-   
         # capture order header from the form
         form_data = {
             'full_name': request.POST['full_name'],
@@ -98,10 +91,6 @@ def checkout(request):
                             )
                         order_line_item.save()
                     
-                        # print(f"event id:{event_id} pickloc_id:{pickloc_id}")
-                        # print(f"ticket no: {item_data}")
-                        # print(f"fare: {fare}")
-
                         i +=1
                 except EventList.DoesNotExist:
                     messages.error(request, (
@@ -119,8 +108,6 @@ def checkout(request):
                 Please double check your information.')
 
     else:
-        #print('START STRIPE INTENT')
-        # print(datetime.datetime.now())
         if not bag:
             messages.error(request, "There's nothing in your bag at the moment")
             return redirect(reverse('events'))

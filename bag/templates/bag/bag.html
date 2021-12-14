@@ -127,12 +127,12 @@
 <script type="text/javascript">
     // Disable +/- buttons outside 1-49 range
     function handleEnableDisable(itemId) {
-        console.log('handle disable ' + itemId) 
+        /*console.log('handle disable ' + itemId) */
         
        
                     var currentValue = parseInt($(`.id_qty_${itemId}`).val());
-                    console.log('currentValue')
-                    console.log(currentValue)
+                    /*console.log('currentValue')
+                    console.log(currentValue)*/
                     var minusDisabled = currentValue < 2;
                     var plusDisabled = currentValue > 48;
                     $(`.decrement-qty_${itemId}`).prop('disabled', minusDisabled);
@@ -179,7 +179,7 @@
 
     // Decrement quantity
     $('.decrement-qty').click(function(e) {
-       console.log('firing decrement-qty click')
+       /*console.log('firing decrement-qty click')*/
        e.preventDefault();
        // get all classes of decrement-qty
       //var x = document.querySelectorAll(".decrement-qty_"{{item.event_id}}");

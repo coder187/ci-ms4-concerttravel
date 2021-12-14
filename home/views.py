@@ -17,7 +17,7 @@ def index(request):
             body = cd.get('message') + '\n' + 'From:' + name + '\n' + 'Email:' + from_form_email 
             cust_email = 'kellyjona@gmail.com'
             form = ContactForm()  #   clear the form
-            print('start email')
+            
             try:
                 send_mail(
                 subject,
@@ -25,7 +25,7 @@ def index(request):
                 settings.DEFAULT_FROM_EMAIL,
                 [cust_email]
                 )
-                print('email 1semt')
+                
                 # copy the sender
                 subject = 'Copy of Message from Contact Us Page @ ConcertTravel.com'
                 cust_email = from_form_email
@@ -35,9 +35,7 @@ def index(request):
                 settings.DEFAULT_FROM_EMAIL,
                 [cust_email]
                 )
-                print('email 2semt')
             except Exception as e:
-                print('error')   
                 print(e)
     
     template = 'home/index.html'
