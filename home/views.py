@@ -12,7 +12,7 @@ def index(request):
             cd = form.cleaned_data
 
             subject = 'message from concert travel.com'
-            name = cd.get('from_email')
+            name = cd.get('name')
             from_form_email = cd.get('from_email')
             body = cd.get('message') + '\n' + 'From:' + name + '\n' + 'Email:' + from_form_email 
             cust_email = 'kellyjona@gmail.com'
