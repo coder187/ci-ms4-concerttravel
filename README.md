@@ -1,109 +1,255 @@
+![Home Page](https://raw.githubusercontent.com/coder187/ci-ms4-concerttravel/main/support/amiresp.png)
+
+![Events Page](https://raw.githubusercontent.com/coder187/ci-ms4-concerttravel/main/support/ami_resp_2.png)
+
+![Detail Page](https://raw.githubusercontent.com/coder187/ci-ms4-concerttravel/main/support/ami_resp_3.png)
+
+# Concert Travel Django CI MS4 App
+[Link to live site](https://ci-ms4-concerttravel.herokuapp.com/)
+
+Project - Full Stack Frameworks With Django - Code Institute
+
+## User Experience (UX)
+### Scope
+#### User stories
+1. As a user I want to easily understand the main purpose of the site.
+1. As a user I want to be able to easily navigate throughout the site.
+1. As a user I want to create a user profile.
+1. As a user I want to create and share recipes.
+1. As a user I want to search the database of recipes.
+1. As a user I want to see the nutrional content of each recipe.
+1. As the site owner I want to provide links to an external cooking equipment purchasing application.
+
+## Structure
+### Technical Capabilities
+HTML5, CCS3, Javascript, Python, Django, SQLITE, Postgres along with Bootstrap framework and are my core strengths in regards to this project.
+
+### Features
+  * Responsive on all devices.
+  * Individual User Profiles.
+  * Admin User can add/delete Events.
+  * Admin User can hide individual Events.
+  * Admin User can add/delete and Pickup Location (Times, Ticket Price).
+  * Users can view the site and purchase tickets anonmously.
+  * Users can create a profile and maintain there contact details & view purchase histroy.
+  * Users can reset their account password.
+  * Users can search the site using the search bar.
+  * Users can view events by Artist, Venue & Event Date.
+  * Users can also view events by Category (Music, Festivals, Shopping & Family Attractions), Venue & Location (Dublin, Cork).
+  * Users can set the order of search results by Artist Name, Date & Venue
+  * Events page indicates which events are selling more than the average.
+  
+
+### Features Left To Implement In Future
+  * Ability create tickets on the fly and attach to confirmation email.
+  * Ability for profile users to cancel or amend booked journeys.
+  * Admin users should be able to view at a glance completed Orders for a given Event.
+  * Api integration to pull Artist, Venue & Event Ticketing details.
+  * Mapping tools to help users navigate the various venues.
+  * More social share options to allow users share events with family and friends
+  * Group Travel option to allow a user organise a private group for travel by allowing non admin users create their own events.
+  
+  
+### Data Model
+![Initial Data Model](https://raw.githubusercontent.com/coder187/ci-ms4-concerttravel/main/support/db_relationships.png)
+
+**users**  
+List of registered users.  
+Passwords are hashed.  
+The username field is stored in the added_by field of the recipe collection.
+
+| id      | username | email | password |
+| ----------- | ---------------- | -------| -----|
+| objectid | string | string |string|
+
+**allergens**
+List of allergens.  
+The allergen text is stored in the recipe collection.
+| id      | allergen | 
+| ----------- | ---------------- | 
+| objectid | string | 
+
+**recipes**
+| id     | name |descr | added_by | added | allergens | difficulty | serves | image_url | ingredients| method|prep time|cook time|ratings|pinned|
+| ---- | ---- | -------- | -------- | -------- | -------- | -------- | -------- |-------- |-------- |-------- | -------- |-------- | ------|------|
+| objectid | string | string | string | string | array(String) |array(String)| string  |array(string) |array(string)|array(string)|string |string| array(String)| array(String)
+
+## Skeleton
+
+### Wireframes
+  * Home Desktop
+  * Home Mobile
+
+  * Event List Mobile
+
+  * Event Details
+
+* Shopping Bag View
+
+    * Checkout        
+
+## Surface
+
+### Design
+  * Colour Scheme	
+    I chose green/blue as the main site color palette as I though it matched well with the domain material and hero image.
+  * Typography
+    Poppins as the main font and Dancing for a little flair. Both from Google Fonts 
+   * Imagery
+    Hero image of kitchen table with empty notebook helps convey the sites main goal.
+    Food and cookery themed icons and images throughout the website help bring the application to life.
+  
+## Technologies
+#### Languages Used
+  * HTML5
+  * CSS3
+  * Javascript
+  * Python 
+  * Django
+  * SQLITE
+  * Postgres 
+  * Heroku
+  * Stripe  
+  * Amazon Web Services 
+  
+
+#### Frameworks, Libraries & Programs Used
+1. [HTML5](https://www.w3.org/)
+1. [CSS3](https://www.w3.org/Style/CSS/Overview.en.html)
+1. [Javascript](https://www.javascript.com/) 
+1. [Bootstrap:](https://getbootstrap.com/docs/4.4/getting-started/introduction/)
+    - Bootstrap was used to assist with the responsiveness and styling of the website.
+1. [Django:](https://www.djangoproject.com/)
+    - Python web framework.
+1. [Google Fonts:](https://fonts.google.com/)
+    - Google fonts were used to import the 'Prompt' font into the style.css file which is used on all pages throughout the project.
+1. [Font Awesome:](https://fontawesome.com/)
+    - Font Awesome was to add icons for aesthetic and UX purposes.
+1. [jQuery:](https://jquery.com/)
+1. [Git](https://git-scm.com/)
+    - Git was used for version control by utilizing the Gitpod terminal to commit to Git and Push to GitHub.
+1. [GitHub:](https://github.com/)
+    - GitHub is used to store the projects code after being pushed from Git.
+1. [GIMP:](https://www.gimp.org/)
+    - GIMP 2 was used to resizing & edit images for the website.
+1. [GITPOD:](https://gitpod.io/)
+    - GitPod was used to create & debug the html,css, javascript & Python
+1. [Google Chrome Dev tools](https://developers.google.com/web/tools/chrome-devtools) 
+    - for debugging.
+1. [Microsoft Edge](https://www.microsoft.com/en-us/edge) 
+    - Dev Tools for testing and debugging.
+1. [JShint](https://jshint.com/) 
+    - to analyse Javascript code.
+1. [SEO CHECKUP](https://seositecheckup.com/)  
+    - verify alt tags.
+1. [Unicorn Revealer](https://chrome.google.com/webstore/detail/unicorn-revealer/lmlkphhdlngaicolpmaakfmhplagoaln?hl=en-GB) 
+    - for debugging.
+1. [Google Lighthouse](https://developers.google.com/web/tools/lighthouse) 
+    - for performance audit.
+1. [W3C Markup Validation Service](https://validator.w3.org/)
+1. [W3C Jigsaw CSS Validation Service](https://jigsaw.w3.org/css-validator/)
+1. [Code Institute Course Material](https://codeinstitute.net/)
+1. [w3schools](https://www.w3schools.com/) 
+    - help with HTML, CSS & Javascript
+1. [Stackoverflow](https://stackoverflow.com/) 
+    - help with HTML, CSS & Javascript
+1. [Slack](https://slack.com/intl/en-ie/) 
+    - communication hub with mentor, tutors and fellow students.
+1. [Markdown Guide](https://www.markdownguide.org/basic-syntax/) 
+    - Markdown Guide for this readme file.
+1. [Am I Responsive](http://ami.responsivedesign.is/) 
+    - Screen Grab of site on various devices.
+1. [Temp Mail](https://temp-mail.org/en/) 
+    - Generate temporary emails accouts for testing
+
+
+## Testing
+[Link to Testing.md file](https://github.com/coder187/ci_ms3_cookbook/blob/main/TESTING.md)
+                          
+## Deployment
+### Deploy Locally via GIT
+1. On GitHub, navigate to the main page of the repository [https://github.com/coder187/ci-ms4-concerttravel/](https://github.com/coder187/ci-ms4-concerttravel/)
+2. Above the list of files, click Code.
+![](https://docs.github.com/assets/images/help/repository/code-button.png)
+3. To clone the repository using HTTPS, under "Clone with HTTPS", copy the link text or click the icon to right. 
+To clone the repository using an SSH key, including a certificate issued by your organization's SSH certificate authority, 
+click **Use SSH**, then copy the link or click the icon.
+To clone a repository using GitHub CLI, click **Use GitHub CLI**, then copy the link text.
+![](https://docs.github.com/assets/images/help/repository/https-url-clone.png)
+![](https://docs.github.com/assets/images/help/repository/https-url-clone-cli.png)
+4. Open Git Bash (or command prompt on Windows. Note you will need [GIT](https://git-scm.com/download/win) for Windows
+5. Change the current working directory to the location where you want the cloned directory.
+6. Type ```git clone``` and then paste the URL you copied earlier.\
+```$ git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY```
+7. Press **Enter** to create your local clone.
+
+### Heroku
+1. Add requrirements.txt file to project with "pip3 freeze > requiremnets.txt"
+1. Add Procfile to project.
+1. Push changes to github
+1. On HEROKU.com, navigate to the site's repository @ [https://github.com/coder187/ci-ms4-concerttravel/](https://github.com/coder187/ci-ms4-concerttravel/)
+1. New App
+1. Name must be unique.
+1. Select Region
+1. Heroku / Resource / Add Resource
+1. Provision New Postgres database
+1. Add connection string to environment variables
+1. Deploy - GitHub Connect
+1. Select  [https://github.com/coder187/ci-ms4-concerttravel/](https://github.com/coder187/ci-ms4-concerttravel/)
+1. Connect App
+1. Build App.
+1. Settings / Reveal Config Vars
+1. Select Open App button from Heroku dashboard.
+
+
+### Deploy Locally via zip file download
+1. On GitHub, navigate to the main page of the repository @ [https://github.com/coder187/ci-ms4-concerttravel/](https://github.com/coder187/ci-ms4-concerttravel/)
+2. Above the list of files, click Code.
+![](https://docs.github.com/assets/images/help/repository/code-button.png)
+3. Click **Download Zip**
+4. Extract the downloaded file to the location where you want the cloned directory.
+
+## Known Bugs
+1. The input text box for the recipe Method on the add recipe page should be larger to accomdate more text.
+1. The input text box for the recipe Method on the add recipe page are numbered but they need to be styled so that they more visible.
+1. Users can rate the same recipes more than once.
+1. Referential Integrity is not enforced for Allergen Delete.
+1. Style element embedded to allow narrow margins on home page.
+
+## Credits
+### Code
+  * Jonathan Kelly for Code Institute Milestone Project Four.
+  * Code Institute Courseware
+  * [Stackoverflow](https://stackoverflow.com/) for help with debugging css, javascript python and django. 
+  * [Django Docs](https://docs.djangoproject.com/en/4.0/) to learn jinja templating and routing.
+  * This project takes inspiration from the Boutique Ado walkthrough project.
+
+### Media
+  * Hero image is from [Pexels](https://www.pexels.com/) for home app hero images.
+  * Event images were taken from the 3Arena website [3Arena](https://3arena.ie/).
+  * No-Image image from [iStockPhoto.com](https://www.istockphoto.com/).
+
+  
+## Data Licensing\Terms of Use
+-   This is a fictional application and does not represent a real world business
+
+## User Accounts
+* Admin User 
+    * user:superuser
+    * password:bigpassword
+
+* Normal User 
+    * I used [Temp Mail](https://temp-mail.org/en/) to generate temporary emails accouts for testing
+
+## Acknowledgements	
+-   My Mentor for continuous helpful feedback.
+
+-   Tutor support at Code Institute for their support.
+
+-   Special Thank you to Sarah and my girls for your suppprt and encouragement in allowing me to broaden my skillset.
+
+**Please note : this project is for educational use only and was created for the Code Institute Module of Full Stack Frameworks With Django - Milestone Project**
+
+**Created by Jonathan Kelly**
+
 ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
-
-Welcome coder187,
-
-
-![model design](https://raw.githubusercontent.com/coder187/ci-ms4-concerttravel/main/support/db_relationships.png)
-
-
-
-## Gitpod Reminders
-
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
-
-`python3 -m http.server`
-
-A blue button should appear to click: _Make Public_,
-
-Another blue button should appear to click: _Open Browser_.
-
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
-
-A blue button should appear to click: _Make Public_,
-
-Another blue button should appear to click: _Open Browser_.
-
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
-
-To log into the Heroku toolbelt CLI:
-
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
-
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
-
-------
-
-## Release History
-
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
-
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
-
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
-
-**July 2 2021:** Remove extensions that are not available in Open VSX.
-
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
-
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
-
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
-
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
-
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
-
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
-
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
-
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
-
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
-
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
-
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
-
-------
-
-## FAQ about the uptime script
-
-**Why have you added this script?**
-
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
-
-**How will this affect me?**
-
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
-
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
-
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
-
-**So….?**
-
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
-
-**Can I opt out?**
-
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
-
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
-
-**Anything more?**
-
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
-
----
-
-Happy coding!
