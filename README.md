@@ -173,16 +173,27 @@ Extended User information store for created user accounts.
 ## Skeleton
 
 ### Wireframes
-  * Home Desktop
-  * Home Mobile
+  * Desktop
+    * [Home](https://raw.githubusercontent.com/coder187/ci-ms4-concerttravel/main/support/wireframes/desktop/home.png)
+    * [Event List](https://raw.githubusercontent.com/coder187/ci-ms4-concerttravel/main/support/wireframes/desktop/event_list.png)
+    * [Event Detail](https://raw.githubusercontent.com/coder187/ci-ms4-concerttravel/main/support/wireframes/desktop/eventDetail.png)
+    * [Adjust Bag](https://raw.githubusercontent.com/coder187/ci-ms4-concerttravel/main/support/wireframes/desktop/adjust_cart.png)
+    * [Checkout](https://raw.githubusercontent.com/coder187/ci-ms4-concerttravel/main/support/wireframes/desktop/checkout.png)
+    * [Checkout Success](https://raw.githubusercontent.com/coder187/ci-ms4-concerttravel/main/support/wireframes/desktop/checkout_success.png)
 
-  * Event List Mobile
+  * Tablet
+    * [Home](https://raw.githubusercontent.com/coder187/ci-ms4-concerttravel/main/support/wireframes/tablet/home_tablet.png)
+    * [Event List](https://raw.githubusercontent.com/coder187/ci-ms4-concerttravel/main/support/wireframes/tablet/events_tablet.png)
+    * [Adjust Bag](https://raw.githubusercontent.com/coder187/ci-ms4-concerttravel/main/support/wireframes/tablet/shopping_bag_tablet.png)
+    * [Checkout](https://raw.githubusercontent.com/coder187/ci-ms4-concerttravel/main/support/wireframes/tablet/checkout_tablet.png)
 
-  * Event Details
-
-* Shopping Bag View
-
-    * Checkout        
+* Mobile
+    * [Home](https://raw.githubusercontent.com/coder187/ci-ms4-concerttravel/main/support/wireframes/mobile/home.png)
+    * [Event List](https://raw.githubusercontent.com/coder187/ci-ms4-concerttravel/main/support/wireframes/mobile/events_list.png)
+    * [Adjust Bag](https://raw.githubusercontent.com/coder187/ci-ms4-concerttravel/main/support/wireframes/mobile/bag_page.png)
+    * [Checkout]https://raw.githubusercontent.com/coder187/ci-ms4-concerttravel/main/support/wireframes/mobile/checkout_summary.png
+    * [Checkout](https://raw.githubusercontent.com/coder187/ci-ms4-concerttravel/main/support/wireframes/mobile/checkout_form.png)
+    * [Checkout Success](https://raw.githubusercontent.com/coder187/ci-ms4-concerttravel/main/support/wireframes/mobile/checkout_success.png)
 
 ## Surface
 
