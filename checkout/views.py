@@ -113,8 +113,6 @@ def checkout(request):
             return redirect(reverse('events'))
 
         current_bag = bag_contents(request)
-        for t in current_bag:
-    
         
         total = current_bag['grand_total']
         
