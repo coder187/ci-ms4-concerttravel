@@ -191,7 +191,7 @@ Extended User information store for created user accounts.
     * [Home](https://raw.githubusercontent.com/coder187/ci-ms4-concerttravel/main/support/wireframes/mobile/home.png)
     * [Event List](https://raw.githubusercontent.com/coder187/ci-ms4-concerttravel/main/support/wireframes/mobile/events_list.png)
     * [Adjust Bag](https://raw.githubusercontent.com/coder187/ci-ms4-concerttravel/main/support/wireframes/mobile/bag_page.png)
-    * [Checkout]https://raw.githubusercontent.com/coder187/ci-ms4-concerttravel/main/support/wireframes/mobile/checkout_summary.png
+    * [Checkout](https://raw.githubusercontent.com/coder187/ci-ms4-concerttravel/main/support/wireframes/mobile/checkout_summary.png)
     * [Checkout](https://raw.githubusercontent.com/coder187/ci-ms4-concerttravel/main/support/wireframes/mobile/checkout_form.png)
     * [Checkout Success](https://raw.githubusercontent.com/coder187/ci-ms4-concerttravel/main/support/wireframes/mobile/checkout_success.png)
 
@@ -317,12 +317,6 @@ To clone a repository using GitHub CLI, click **Use GitHub CLI**, then copy the 
 3. Click **Download Zip**
 4. Extract the downloaded file to the location where you want the cloned directory.
 
-## Known Bugs
-1. The input text box for the recipe Method on the add recipe page should be larger to accomdate more text.
-1. The input text box for the recipe Method on the add recipe page are numbered but they need to be styled so that they more visible.
-1. Users can rate the same recipes more than once.
-1. Referential Integrity is not enforced for Allergen Delete.
-1. Style element embedded to allow narrow margins on home page.
 
 ## Credits
 ### Code
@@ -359,5 +353,3 @@ To clone a repository using GitHub CLI, click **Use GitHub CLI**, then copy the 
 **Please note : this project is for educational use only and was created for the Code Institute Module of Full Stack Frameworks With Django - Milestone Project**
 
 **Created by Jonathan Kelly**
-
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
