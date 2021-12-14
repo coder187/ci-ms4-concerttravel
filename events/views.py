@@ -260,7 +260,6 @@ def add_pick(request):
 @login_required
 def edit_pick(request, pick_id):
     """ Edit a pick up location in the store """
-    # print ('edit pick started')
 
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')

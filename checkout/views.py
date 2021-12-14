@@ -114,11 +114,10 @@ def checkout(request):
 
         current_bag = bag_contents(request)
         for t in current_bag:
-            print (t)
-        print (current_bag['product_count'])
+    
+        
         total = current_bag['grand_total']
-        print ('total')
-        print (total)
+        
         stripe_total = round(total * 100)
 
         stripe.api_key = stripe_secret_key
@@ -126,13 +125,12 @@ def checkout(request):
             amount=stripe_total,
             currency=settings.STRIPE_CURRENCY,
             )
-        # print(intent)
+        
 
          # Attempt to prefill the form with any info the user maintains in their profile
         if request.user.is_authenticated:
             try:
                 profile = UserProfile.objects.get(user=request.user)
-                print ('oderform start')
 
                 order_form = OrderForm(initial={
                     'full_name': profile.user.get_full_name(),
@@ -145,9 +143,8 @@ def checkout(request):
                     'street_address2': profile.default_street_address2,
                     'county': profile.default_county,
                 })
-                print ('oderform end')
+                
             except UserProfile.DoesNotExist:
-                print ('profile not fond')
                 order_form = OrderForm()
 
         else:

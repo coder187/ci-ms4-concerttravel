@@ -36,7 +36,7 @@ def add_to_bag(request, event_id):
         bag[event_pickloc] = qty  # 'event_id:pickloc':qty
 
     request.session['bag'] = bag
-    # print(request.session['bag'])
+    
     return redirect(redirect_url)
 
 def adjust_bag(request, combination_key):

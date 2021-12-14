@@ -21,8 +21,6 @@ class StripeWH_Handler:
 
     def _send_confirmation_email(self, order):
         """Send the user a confirmation email"""
-        # print ('send email started')
-        # print (order.order_number)
 
         ol = OrderLineItem.objects.filter(order_id=order.id).order_by('-ticket_no')
           
@@ -34,15 +32,12 @@ class StripeWH_Handler:
             'checkout/confirmation_emails/confirmation_email_body.txt',
             {'order': order, 'contact_email': settings.DEFAULT_FROM_EMAIL,'ol':ol})
         
-        print ('send mail')
         send_mail(
             subject,
             body,
             settings.DEFAULT_FROM_EMAIL,
             [cust_email]
-        )        
-        print ('send mail COMPLETED')
-
+        ) 
 
     def handle_event(self, event):
         """
@@ -56,7 +51,6 @@ class StripeWH_Handler:
         """
         Handle the payment_intent.succeeded webhook from Stripe
         """
-        # print('handle_payment_intent_succeeded started')
         intent = event.data.object
         pid = intent.id
         bag = intent.metadata.bag
@@ -110,7 +104,6 @@ class StripeWH_Handler:
                 attempt += 1
                 time.sleep(1)
         if order_exists:
-            # print ('call send mail')
             self._send_confirmation_email(order)
             return HttpResponse(
                 content=f'Webhook received: {event["type"]} | SUCCESS: Verified order already in database',
@@ -140,8 +133,7 @@ class StripeWH_Handler:
                     fare = pickloc_model.fare
                     eventlist_model = EventList.objects.get(id=event_id)
                     qty = int(item_data)
-                    #print (event_id)
-                    #print (pickloc_id)
+                    
                     i=0
                     for i in range(qty):
                         order_line_item = OrderLineItem(
@@ -158,7 +150,7 @@ class StripeWH_Handler:
                 return HttpResponse(
                     content=f'Webhook received: {event["type"]} | ERROR: {e}',
                     status=500)
-        # print ('send maik -oder not in db')
+
         self._send_confirmation_email(order)
         return HttpResponse(
             content=f'Webhook received: {event["type"]} | SUCCESS: Created order in webhook',
