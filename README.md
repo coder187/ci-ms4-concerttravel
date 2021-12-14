@@ -188,12 +188,12 @@ Extended User information store for created user accounts.
 
 ### Design
   * Colour Scheme	
-    I chose green/blue as the main site color palette as I though it matched well with the domain material and hero image.
+    I chose black/green/yellow combinations as this matches well with the exisitng concert-travel business logo.
   * Typography
-    Poppins as the main font and Dancing for a little flair. Both from Google Fonts 
+    Lato and Sora google fonts. Sora stood out as a good poster type font which suits the sites style of concert posters.
    * Imagery
-    Hero image of kitchen table with empty notebook helps convey the sites main goal.
-    Food and cookery themed icons and images throughout the website help bring the application to life.
+    Hero images taken from google images of various scenes of crowds of people at concerts with translucent hints of blue, purle and yellow.
+    Imaged fot event cards are comprised of Event/Artist promotional media combined with the site concer-travel main "peace" logo with yellow green concert scene.
   
 ## Technologies
 #### Languages Used
