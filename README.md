@@ -12,13 +12,30 @@ Project - Full Stack Frameworks With Django - Code Institute
 ## User Experience (UX)
 ### Scope
 #### User stories
-1. As a user I want to easily understand the main purpose of the site.
-1. As a user I want to be able to easily navigate throughout the site.
-1. As a user I want to create a user profile.
-1. As a user I want to create and share recipes.
-1. As a user I want to search the database of recipes.
-1. As a user I want to see the nutrional content of each recipe.
-1. As the site owner I want to provide links to an external cooking equipment purchasing application.
+| 1  | Site User  | Easily view prices for travel to concerts and events                               | Make an informed decision on whether to purchase or not                         |
+|----|------------|------------------------------------------------------------------------------------|---------------------------------------------------------------------------------|
+| 2  | Site User  | Qucikly retrieve contact information for the buisness operator                     | Verify the business  details                                                    |
+| 3  | Site User  | Easily send a message to the buisness via the site                                 | Easily make contact or request more inforation                                  |
+| 4  | Site User  | Easily view which events are more popular                                          | Purchase tickets before they are still in stock.                                |
+| 5  | Shopper    | Easily view the total in my shopping bag at any given time                         | Avoid over spendinf                                                             |
+| 6  | Site User  | Easily create an account                                                           | Be able to view my purchase history and store my billing details for next visit |
+| 7  | Site User  | Easily login or out                                                                | I can view and edit my personal information                                     |
+| 8  | Site User  | Easily reset my password                                                           | I can recover my account                                                        |
+| 9  | Site User  | Receive email cofirmation after registering                                        | Verify successful account registration                                          |
+| 10 | Site User  | Have a personalises user profile                                                   | View my order history, personal informaton and save  my payment information     |
+| 11 | Shopper    | Sort list of events by Date, Venue and Artist name                                 | Easily find the events I am most interested in                                  |
+| 12 | Shopper    | View multiple Venues for the given City                                            | I can view events in that location                                              |
+| 13 | Shopper    | Search for an Event by Artist name or Event description                            | Find a specific event                                                           |
+| 14 | Shopper    | Easily see what I have searched for and total results                              | Quickly decide whether the Event is available.                                  |
+| 15 | Shopper    | Easily select the number of seats for a given Event when purchasing                | Ensure I don’t select the incorrect Event or quantity                           |
+| 16 | Shopper    | View contents of my shopping bag                                                   | See the total cost of my order and all items selected                           |
+| 17 | Shopper    | Adjust the quantity of individual items in my bag                                  | Easily make changes to my purchase before checkout                              |
+| 18 | Shopper    | Easily enter my payment informaion                                                 | Easy, quick and hassle free checkout                                            |
+| 19 | Shopper    | Feel my personal information is safe and secure                                    | Confidently provide the needed information to make a checkout                   |
+| 20 | Admin User | Easily add and edit Events                                                         | Update the app with new information                                             |
+| 21 | Admin User | Easily update an Event so that it is no longer accessiable to shoppers to purchase | Prevent over selling available seats.                                           |
+| 22 | Admin User | Easily edit Pick Up Locations                                                      | Add new locations as required                                                   |
+| 23 | Admin User | Easily update the price per seat                                                   | Control fares charged                                                           |
 
 ## Structure
 ### Technical Capabilities
@@ -126,6 +143,7 @@ The allergen text is stored in the recipe collection.
 1. [Font Awesome:](https://fontawesome.com/)
     - Font Awesome was to add icons for aesthetic and UX purposes.
 1. [jQuery:](https://jquery.com/)
+    - jQuery is a fast, small, and feature-rich JavaScript library.
 1. [Git](https://git-scm.com/)
     - Git was used for version control by utilizing the Gitpod terminal to commit to Git and Push to GitHub.
 1. [GitHub:](https://github.com/)
