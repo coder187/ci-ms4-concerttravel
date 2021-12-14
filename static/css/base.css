@@ -229,6 +229,14 @@ input[name='q']::placeholder {
 }
 
 
+/*strap line*/
+.strapline{
+
+    justify-content: center;
+    font-family: 'Sora', sans-serif;
+    text-align: center;
+     
+}
 
 /* Event Form */
 
@@ -332,6 +340,7 @@ input[name='q']::placeholder {
 #footer-details{
     padding:20px;
     text-align: center;
+    font-family: 'Sora', sans-serif;
 }   
 
 footer ul li{
