@@ -266,7 +266,7 @@ input[name='q']::placeholder {
     border-radius: 0;
 }
 
-/*---------------events footer --- */
+
 
 
 .popular{
@@ -305,11 +305,9 @@ input[name='q']::placeholder {
 /*---------------footer--- */
 
 #footer{
-    color:#fafafa
     min-height: 200px;
     background: url('/media/sound.png') no-repeat center center;
     /*background-size: cover; */
-    
 }
 
 
@@ -341,6 +339,7 @@ input[name='q']::placeholder {
     padding:20px;
     text-align: center;
     font-family: 'Sora', sans-serif;
+    color: #fafafa;
 }   
 
 footer ul li{
