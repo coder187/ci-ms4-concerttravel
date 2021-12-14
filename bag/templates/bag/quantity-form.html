@@ -27,6 +27,18 @@
     </div>
     
 </form>
-<a class="remove-item text-danger float-right" id="remove_{{ item.combi_key }}"><small>Remove</small></a>
 <a class="update-link text-info"><small>Update</small></a>
+<a class="remove-item text-danger float-right" id="remove_{{ item.combi_key }}"><small>Remove</small></a>
 <br><br>
+
+
+<script type="text/javascript">
+    // Update quantity
+    $('.update-link').click(function(e) {
+        console.log("upate clickje")
+        var form = $(this).prev('.update-form'); // use previuls to find update form and call its submit method
+        console.log("form submit")
+        //console.log(form.id)
+        form.submit();
+    })
+</script>
