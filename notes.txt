@@ -1,26 +1,26 @@
 todo:
 fix noimage AND IMAGE SETTINGS [done]
-add br to index 
+add br to index [done]
 add ticket discount [done]
 toasts [done]
-size images 
+size images [done]
 checkout.models.Order.update_total [done]
-fix css on checkout css
+fix css on checkout css [done]
 fix country code on payment form [done]
 fix delivert details [done]
-remove print and console debug lines. [done] - -recheck
+remove print and console debug lines. [done] - -recheck -[done]
 ensure all images are workung as expected [done]
-general css and site tidu yp
+general css and site tidu yp [done]
 automaated testing.
 fix images not showing on bag htnml [fixed] [done]
-resize images 
+resize images [done]
 add qty to message toats. [done]
-email text and possiblt attach ticket.
-discount when ticket purch >10 [done]
+email text and possiblt attach ticket. [email done]
+discount when ticket purch > rate set in settings.py [done]
 date format on date picker 
 add name to profile page. 
 add if cond to events to show events where publish = false for superuser. [done]
-SWITCH DEBUG TO FALSE
+SWITCH DEBUG TO FALSE [done]
 save fname and sname on register - todo extend allauth SignupForm to inc fname and lastname.
 css layout fixes [done]
 add footer homepage. [done]

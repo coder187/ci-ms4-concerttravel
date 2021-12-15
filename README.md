@@ -272,7 +272,9 @@ Extended User information store for created user accounts.
 
 
 ## Testing
-[Link to Testing.md file](https://github.com/coder187/ci_ms3_cookbook/blob/main/TESTING.md)
+[Link to Testing.md file](https://github.com/coder187/ci-ms4-concerttravel/blob/main/testing.md)
+
+
                           
 ## Deployment
 ### Deploy Locally via GIT
@@ -316,6 +318,11 @@ To clone a repository using GitHub CLI, click **Use GitHub CLI**, then copy the 
 ![](https://docs.github.com/assets/images/help/repository/code-button.png)
 3. Click **Download Zip**
 4. Extract the downloaded file to the location where you want the cloned directory.
+
+
+## Credits
+1. Date picker on Edit Event has date format mm/dd/yy
+1. Save retrieve User Name to/from user accounts
 
 
 ## Credits
