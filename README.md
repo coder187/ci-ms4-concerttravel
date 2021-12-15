@@ -8,6 +8,9 @@
 [Link to live site](https://ci-ms4-concerttravel.herokuapp.com/)
 
 Project - Full Stack Frameworks With Django - Code Institute
+An application developed with Django web framework to allow users purchase individual seats to concerts.
+Stripe integration allows for secure credit card transactions. Orders and user Profiles are persisted to Postgres database. Content is hosted by Amazon Web Services.
+Users can create profiles and view t
 
 ## User Experience (UX)
 ### Scope
@@ -269,7 +272,8 @@ Extended User information store for created user accounts.
     - Screen Grab of site on various devices.
 1. [Temp Mail](https://temp-mail.org/en/) 
     - Generate temporary emails accouts for testing
-
+1. [Amazon Web Services](https://aws.amazon.com/) 
+    - Content Hosting
 
 ## Testing
 [Link to Testing.md file](https://github.com/coder187/ci-ms4-concerttravel/blob/main/testing.md)
@@ -320,7 +324,7 @@ To clone a repository using GitHub CLI, click **Use GitHub CLI**, then copy the 
 4. Extract the downloaded file to the location where you want the cloned directory.
 
 
-## Credits
+## Known Issues
 1. Date picker on Edit Event has date format mm/dd/yy
 1. Save retrieve User Name to/from user accounts
 
@@ -341,6 +345,12 @@ To clone a repository using GitHub CLI, click **Use GitHub CLI**, then copy the 
   
 ## Data Licensing\Terms of Use
 -   This is a fictional application and does not represent a real world business
+
+## Test Cards
+* [Stripe Cards](https://stripe.com/docs/testing)
+    * No authentication (default U.S. card): 4242 4242 4242 4242.
+    * Authentication required: 4000 0027 6000 3184.
+    * a valid expiration date in the future, and any random CVC number
 
 ## User Accounts
 * Admin User 
