@@ -77,7 +77,7 @@ Initial Data Model Prototype
 ![Initial Data Model Prototype](https://raw.githubusercontent.com/coder187/ci-ms4-concerttravel/main/support/db_relationships.png)
 
 Final Database Schema.
-![Initial Data Model Prototype](https://raw.githubusercontent.com/coder187/ci-ms4-concerttravel/main/support/db_relationships.png)
+![Initial Data Model Prototype](https://raw.githubusercontent.com/coder187/ci-ms4-concerttravel/main/support/schema.png)
 
 **Events**  
 List of concerts, sporting, shopping trips and day trips.  
